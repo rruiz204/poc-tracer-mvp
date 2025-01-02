@@ -1,1 +1,0 @@
-### POC Cypress E2E Testing
