@@ -26,9 +26,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "@controllers/*": ["src/controllers/*"],
-      "@database/": ["src/database/*"],
-      "@routers/*": ["src/routers/*"],
+      "@Controllers/*": ["src/Controllers/*"],
+      "@Database/": ["src/Database/*"],
+      "@Routers/*": ["src/Routers/*"],
     }
   }
 }
