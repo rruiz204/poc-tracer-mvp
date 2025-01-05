@@ -1,5 +1,5 @@
 import express, { type Express } from "express";
-import { MainRouter } from "@routers/MainRouter";
+import { MainRouter } from "@Routers/ApiRouter";
 
 export class Boostrap {
   constructor(private app: Express) {}
