@@ -6,7 +6,8 @@
     "dev": "bun --hot run server.ts",
     "start": "bun run server.ts",
     "test:unit": "vitest",
-    "test:unit:coverage": "vitest --coverage"
+    "test:unit:coverage": "vitest --coverage",
+    "prisma:studio": "prisma studio"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -17,6 +18,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@prisma/client": "6.1.0",
     "express": "^5.0.1",
     "prisma": "^6.1.0",
     "vitest": "^2.1.8"
