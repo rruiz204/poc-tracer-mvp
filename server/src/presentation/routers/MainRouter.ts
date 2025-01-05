@@ -1,7 +1,10 @@
-import type { Request, Response } from "express";
 import { Router } from "express";
+import { ProductRouter } from "./ProductRouter";
+import type { Request, Response } from "express";
 
 export const MainRouter = Router();
+
+MainRouter.use("/product", ProductRouter);
 
 MainRouter.get("/ping", (req: Request, res: Response) => {
   res.status(200).json({ ping: "pong" });
