@@ -26,10 +26,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "@infrastructure/*": ["src/infrastructure/*"],
-      "@presentation/*": ["src/presentation/*"],
-      "@application/*": ["src/application/*"],
-      "@core/*": ["src/core/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@database/": ["src/database/*"],
+      "@routers/*": ["src/routers/*"],
     }
   }
 }
