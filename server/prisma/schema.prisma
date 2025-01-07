@@ -14,5 +14,5 @@ model Product {
   id Int @id @default(autoincrement())
   code String @unique
   name String
-  price Decimal
+  price String
 }
