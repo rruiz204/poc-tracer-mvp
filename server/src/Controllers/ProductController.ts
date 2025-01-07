@@ -1,3 +1,4 @@
+import { v4 } from "uuid";
 import type { Request, Response } from "express";
 import type { ProductService } from "@Services/ProductService";
 
@@ -15,6 +16,14 @@ export class ProductController {
   };
 
   public async store(req: Request, res: Response) {
-    res.status(200).json({ path: "store" });
+    const code = v4();
+    
+    const product = await this.service.store({
+      name: req.body.name,
+      code: code,
+      price: req.body.price,
+    });
+
+    res.status(200).json({ path: "store", product });
   };
 };
