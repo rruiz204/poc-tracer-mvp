@@ -5,8 +5,9 @@ const app = express();
 
 const bootstrap = new Boostrap(app);
 
-bootstrap.addRouters();
+bootstrap.addLogging();
 bootstrap.addMiddlewares();
+bootstrap.addRouters();
 
 app.listen(3000, () => {
   console.log(`Server is listening at http://localhost:3000`);
