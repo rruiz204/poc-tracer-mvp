@@ -18,6 +18,7 @@ export class Boostrap {
   public addLogging() {
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       LoggerService.info(`${req.method} ${req.url}`);
+      next();
     });
   };
 };
