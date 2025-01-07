@@ -1,9 +1,15 @@
 import { Router } from "express";
-import { ProductController } from "@Controllers/ProductController";
+import { Context } from "@Database/Context";
 
-const controller = new ProductController();
+import { ProductService } from "@Services/ProductService";
+import { ProductController } from "@Controllers/ProductController";
+import { ProductRepository } from "@Repositories/ProductRepository";
+
+const repository = new ProductRepository(Context);
+const service = new ProductService(repository);
+const controller = new ProductController(service);
 
 export const ProductRouter = Router();
 
-ProductRouter.get("/index", controller.index);
+ProductRouter.get("/list", controller.list);
 ProductRouter.post("/store", controller.store);
