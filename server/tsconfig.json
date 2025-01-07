@@ -26,9 +26,10 @@
 
     "baseUrl": ".",
     "paths": {
+      "@Repositories/*": ["src/Repositories/*"],
       "@Controllers/*": ["src/Controllers/*"],
       "@Services/*": ["src/Services/*"],
-      "@Database/": ["src/Database/*"],
+      "@Database/*": ["src/Database/*"],
       "@Routers/*": ["src/Routers/*"],
     }
   }
