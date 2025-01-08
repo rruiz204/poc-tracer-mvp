@@ -16,6 +16,10 @@ export class ProductService {
 
   public async store(command: CreateProductCommand): Promise<Product> {
     await ValidationService.validate(CreateProductSchema, command);
+
+    const existingProduct = await this.repository.find({ name: { equals: command.name } });
+    if (existingProduct) throw new Error("equal code finded");
+
     return await this.repository.store(command);
   };
 };
