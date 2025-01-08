@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import { MainRouter } from "@Routers/ApiRouter";
 import { LoggerService } from "@Services/LoggerService";
@@ -11,6 +12,7 @@ export class Boostrap {
   };
 
   public addMiddlewares() {
+    this.app.use(cors());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   };
