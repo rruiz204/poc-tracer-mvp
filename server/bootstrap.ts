@@ -21,4 +21,13 @@ export class Boostrap {
       next();
     });
   };
+
+  public addExceptionHandler() {
+    this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+      const status = 500;
+
+      res.status(status).json({ message: err.message });
+      LoggerService.error(`${req.method} ${req.url}`);
+    });
+  };
 };
