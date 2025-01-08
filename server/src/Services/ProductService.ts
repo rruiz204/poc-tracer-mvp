@@ -1,9 +1,9 @@
 import type { Product } from "@prisma/client";
 import type { ProductRepository } from "@Repositories/ProductRepository";
-import type { CreateProductCommand } from "src/CQR/ProductCQR";
+import type { CreateProductCommand } from "@CQR/ProductCQR";
 
 import { ValidationService } from "./ValidationService";
-import { CreateProductSchema } from "src/Schemas/ProductSchema";
+import { CreateProductSchema } from "@Schemas/ProductSchema";
 
 export class ProductService {
   constructor(
