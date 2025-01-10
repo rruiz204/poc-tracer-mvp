@@ -16,14 +16,7 @@ export class ProductController {
   };
 
   public async store(req: Request, res: Response) {
-    const code = v4();
-
-    const product = await this.service.store({
-      name: req.body.name,
-      code: code,
-      price: req.body.price,
-    });
-
+    const product = await this.service.store(req.body);
     res.status(200).json({ path: "store", product });
   };
 };
