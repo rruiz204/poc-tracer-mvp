@@ -32,7 +32,6 @@
       "@Database/*": ["src/Database/*"],
       "@UseCases/*": ["src/UseCases/*"],
       "@Routers/*": ["src/Routers/*"],
-      "@Schemas/*": ["src/Schemas/*"],
     }
   }
 }
