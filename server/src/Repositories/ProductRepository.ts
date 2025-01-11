@@ -11,7 +11,7 @@ export class ProductRepository {
   };
 
   public async find(filters: Prisma.ProductWhereInput): Promise<Product | null> {
-    return await this.prisma.product.findFirst({where: filters});
+    return await this.prisma.product.findFirst({ where: filters });
   };
 
   public async store(command: CreateProductCommand): Promise<Product> {
