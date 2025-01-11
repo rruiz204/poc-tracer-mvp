@@ -1,13 +1,18 @@
 import { Router } from "express";
 import { Context } from "@Database/Context";
 
-import { ProductService } from "@Services/ProductService";
 import { ProductController } from "@Controllers/ProductController";
 import { ProductRepository } from "@Repositories/ProductRepository";
 
+import { ListProductUseCase } from "@UseCases/Product/ListProduct/ListProductUseCase";
+import { CreateProductUseCase } from "@UseCases/Product/CreateProduct/CreateProductUseCase";
+
 const repository = new ProductRepository(Context);
-const service = new ProductService(repository);
-const controller = new ProductController(service);
+
+const listProductUseCase = new ListProductUseCase(repository);
+const createProductUseCase = new CreateProductUseCase(repository);
+
+const controller = new ProductController(listProductUseCase, createProductUseCase);
 
 export const ProductRouter = Router();
 

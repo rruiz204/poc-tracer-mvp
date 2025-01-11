@@ -1,5 +1,5 @@
-import type { CreateProductCommand } from "src/CQR/ProductCQR";
 import { PrismaClient, type Product, Prisma } from "@prisma/client";
+import type { CreateProductCommand } from "@UseCases/Product/CreateProduct/CreateProductCommand";
 
 export class ProductRepository {
   constructor(

@@ -30,9 +30,8 @@
       "@Controllers/*": ["src/Controllers/*"],
       "@Services/*": ["src/Services/*"],
       "@Database/*": ["src/Database/*"],
+      "@UseCases/*": ["src/UseCases/*"],
       "@Routers/*": ["src/Routers/*"],
-      "@Schemas/*": ["src/Schemas/*"],
-      "@CQR/*": ["src/CQR/*"],
     }
   }
 }

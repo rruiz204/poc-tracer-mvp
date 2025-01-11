@@ -1,20 +1,17 @@
-import { Prisma, type Product } from "@prisma/client";
+import { Prisma } from "@prisma/client";
+import { ValidationService } from "@Services/ValidationService";
 import type { ProductRepository } from "@Repositories/ProductRepository";
-import type { CreateProductCommand, CreateProductResponse } from "@CQR/ProductCQR";
 
-import { ValidationService } from "./ValidationService";
-import { CreateProductSchema } from "@Schemas/ProductSchema";
+import { CreateProductSchema } from "./CreateProductSchema";
+import type { CreateProductCommand } from "./CreateProductCommand";
+import type { CreateProductResponse } from "./CreateProductResponse";
 
-export class ProductService {
+export class CreateProductUseCase {
   constructor(
     private repository: ProductRepository,
   ) {};
 
-  public async list(): Promise<Product[]> {
-    return await this.repository.list();
-  };
-
-  public async store(command: CreateProductCommand): Promise<CreateProductResponse> {
+  public async use(command: CreateProductCommand): Promise<CreateProductResponse> {
     await ValidationService.validate(CreateProductSchema, command);
     command.price = new Prisma.Decimal(command.price); // flag: refactor
 
