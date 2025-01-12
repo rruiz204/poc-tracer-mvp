@@ -13,7 +13,8 @@
     "@types/bun": "latest",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
-    "@vitest/coverage-v8": "2.1.8"
+    "@vitest/coverage-v8": "2.1.8",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
