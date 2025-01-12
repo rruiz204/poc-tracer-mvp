@@ -14,7 +14,7 @@ model Product {
   id          Int      @id @default(autoincrement())
   name        String   @unique
   description String
-  price       Decimal
+  price       Int
   stock       Int
   active      Boolean  @default(true)
   createdAt   DateTime @default(now())

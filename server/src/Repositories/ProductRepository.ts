@@ -1,5 +1,4 @@
 import { PrismaClient, type Product, Prisma } from "@prisma/client";
-import type { CreateProductCommand } from "@UseCases/Product/CreateProduct/CreateProductCommand";
 
 export class ProductRepository {
   constructor(
@@ -14,7 +13,7 @@ export class ProductRepository {
     return await this.prisma.product.findFirst({ where: filters });
   };
 
-  public async store(command: CreateProductCommand): Promise<Product> {
-    return await this.prisma.product.create({ data: {...command} });
+  public async store(product: Prisma.ProductCreateInput): Promise<Product> {
+    return await this.prisma.product.create({ data: {...product} });
   };
 };
