@@ -1,4 +1,3 @@
-import { Prisma } from "@prisma/client";
 import { ValidationService } from "@Services/ValidationService";
 import type { ProductRepository } from "@Repositories/ProductRepository";
 
