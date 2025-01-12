@@ -13,12 +13,12 @@ export class CreateProductUseCase {
 
   public async use(command: CreateProductCommand): Promise<CreateProductResponse> {
     await ValidationService.validate(CreateProductSchema, command);
-    command.price = new Prisma.Decimal(command.price);
 
     const existingProduct = await this.repository.find({ name: { equals: command.name } });
     if (existingProduct) throw new Error("This product is already registered");
 
-    const productStored = await this.repository.store(command)
+    const productStored = await this.repository.store(command);
+    
     return {
       id: productStored.id,
       name: productStored.name,
