@@ -8,8 +8,8 @@
     "prisma:studio": "prisma studio",
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:migrate:test": "DATABASE_URL=file:./playwright-test.db prisma migrate dev",
-    "test:unit": "vitest",
-    "test:unit:coverage": "vitest --coverage"
+    "test:unit": "DATABASE_URL=file:./playwright-test.db vitest",
+    "test:unit:coverage": "DATABASE_URL=file:./playwright-test.db vitest --coverage"
   },
   "devDependencies": {
     "@types/bun": "latest",
