@@ -1,6 +1,4 @@
-import type { Product } from "@prisma/client";
 import type { ProductRepository } from "@Repositories/ProductRepository";
-
 import type { ListProductQuery } from "./ListProductQuery";
 import type { ListProductResponse } from "./ListProductResponse";
 
@@ -9,7 +7,15 @@ export class ListProductUseCase {
     private repository: ProductRepository,
   ) {};
 
-  public async use(): Promise<Product[]> { // flag: adjust
-    return await this.repository.list();
+  public async use(): Promise<ListProductResponse[]> {
+    return (await this.repository.list()).map(p => ({
+      id: p.id,
+      name: p.name,
+      description: p.description,
+      price: p.price,
+      stock: p.stock,
+      active: p.active,
+      createdAt: p.createdAt
+    }));
   };
 };
