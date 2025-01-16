@@ -1,6 +1,7 @@
 import { Page } from "@shared/components/shared/Page";
 import { useProductStore } from "@core/stores/useProductStore";
 import { useProductEffects } from "@core/effects/useProductEffects";
+import { ProductCard } from "@shared/components/product/ProductCard";
 
 export const Product = () => {
   useProductEffects();
@@ -10,9 +11,17 @@ export const Product = () => {
   return (
     <Page>
       <div className="text-white">
-        <h1 data-testid="product-title" className="text-3xl font-semibold">Product Page</h1>
-        <hr />
-        { products.length > 0 && <p data-testid="product-counter">There are {products.length} products</p> }
+        <h1 className="text-3xl font-semibold pb-4" data-testid="product-title">
+          Product Page
+        </h1>
+
+        <div className="border-2 border-white">
+          <div className="w-full p-5 flex gap-5">
+            {products.map((product) => (
+              <ProductCard product={product}></ProductCard>
+            ))}
+          </div>
+        </div>
       </div>
     </Page>
   );
