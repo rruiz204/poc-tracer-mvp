@@ -6,7 +6,7 @@ interface Props {
 
 export const ProductCard = ({ product }: Props) => {
   return (
-    <div className="border-2 border-white">
+    <div className="border-2 border-white" data-testid="product-card">
       <div className="w-72 py-4 px-3">
         <div className="mb-1 flex justify-between items-center">
           <p className="text-2xl font-semibold">{product.name}</p>

@@ -2,7 +2,8 @@ import { Page } from "@playwright/test";
 import { ListProductFixture } from "@e2e/fixtures/product/ListProductsFixture";
 
 export class ListProductPage {
-  private title: string = "product-title";
+  private titleId: string = "product-title";
+  private cardId: string = "product-card";
 
   constructor(private page: Page) {};
 
@@ -17,6 +18,10 @@ export class ListProductPage {
   };
 
   public async getProductTitle() {
-    return this.page.getByTestId(this.title).textContent();
+    return this.page.getByTestId(this.titleId).textContent();
+  };
+
+  public async getProductCards() {
+    return this.page.getByTestId(this.cardId);
   };
 };
