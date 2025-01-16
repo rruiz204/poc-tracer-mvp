@@ -18,7 +18,7 @@ export const Product = () => {
         <div className="border-2 border-white">
           <div className="w-full p-5 flex gap-5">
             {products.map((product) => (
-              <ProductCard product={product}></ProductCard>
+              <ProductCard key={product.id} product={product}></ProductCard>
             ))}
           </div>
         </div>
