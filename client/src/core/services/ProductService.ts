@@ -2,18 +2,18 @@ import { Khaos } from "@core/khaos/Khaos";
 import { KhaosResponse } from "@core/khaos/KhaosTypes";
 import { Product } from "@core/models/Product";
 
-interface ListResponse {
+export interface ProductListResponse {
   path: string;
   products: Product[];
 };
 
-const list = async (): Promise<KhaosResponse<ListResponse>> => {
+const list = async (): Promise<KhaosResponse<ProductListResponse>> => {
   const khaos = new Khaos();
   
   khaos.setHttpMethod("GET");
   khaos.setEndpoint("product/list");
 
-  return await khaos.invoke<ListResponse>();
+  return await khaos.invoke<ProductListResponse>();
 };
 
 // ====================================
