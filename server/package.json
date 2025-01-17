@@ -5,11 +5,15 @@
   "scripts": {
     "dev": "bun --hot run server.ts",
     "start": "bun run server.ts",
+    "prisma:seed": "prisma db seed",
     "prisma:studio": "prisma studio",
     "prisma:migrate:main": "prisma migrate dev",
     "prisma:migrate:test": "DATABASE_URL=file:./playwright-test.db prisma migrate dev",
     "test:unit": "DATABASE_URL=file:./playwright-test.db vitest",
     "test:unit:coverage": "DATABASE_URL=file:./playwright-test.db vitest --coverage"
+  },
+  "prisma": {
+    "seed": "bun ./src/Database/Seed.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
