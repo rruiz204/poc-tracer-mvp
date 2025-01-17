@@ -15,12 +15,10 @@ export const Product = () => {
           Product Page
         </h1>
 
-        <div className="border-2 border-white">
-          <div className="w-full p-5 flex gap-5">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product}></ProductCard>
-            ))}
-          </div>
+        <div className="w-full my-4">
+          {products.map((product )=> (
+            <ProductCard product={product}></ProductCard>
+          ))}
         </div>
       </div>
     </Page>
