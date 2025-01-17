@@ -12,7 +12,7 @@ describe("product repository", () => {
   });
 
   it("should store a product in the database", async () => {
-    const product = ProductFactory.build({ id: 1, name: "testing product" });
+    const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
     await repository.store({ name, description, price, stock });
@@ -22,7 +22,7 @@ describe("product repository", () => {
   });
 
   it("should list all products from the database", async () => {
-    const product = ProductFactory.build({ id: 1, name: "testing product" });
+    const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
     await Context.product.createMany({ data: [{ name, description, price, stock }] });
@@ -32,7 +32,7 @@ describe("product repository", () => {
   });
 
   it("should find a product by its name", async () => {
-    const product = ProductFactory.build({ id: 1, name: "testing product" });
+    const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
     await Context.product.create({ data: { name, description, price, stock } });

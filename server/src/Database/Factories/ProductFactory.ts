@@ -1,16 +1,15 @@
 import { faker } from "@faker-js/faker";
-import { Prisma, type Product } from "@prisma/client";
+import type { Product } from "@prisma/client";
 
 interface FactoryArgs {
   id: number;
-  name: string;
 };
 
 export class ProductFactory {
-  public static build({ id, name }: FactoryArgs): Product {
+  public static build({ id }: FactoryArgs): Product {
     return {
       id: id,
-      name: name,
+      name: faker.commerce.product(),
       description: faker.lorem.paragraph(),
       price: faker.number.int({ min: 10, max: 50 }),
       stock: faker.number.int({ min: 10, max: 50 }),

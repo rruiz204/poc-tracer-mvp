@@ -10,8 +10,8 @@ describe("list products use case", () => {
   const useCase = new ListProductUseCase(repository);
 
   it("should return all products when products exist", async () => {
-    const firstProduct = ProductFactory.build({ id: 1, name: "first product" });
-    const secondProduct = ProductFactory.build({ id: 2, name: "second product" });
+    const firstProduct = ProductFactory.build({ id: 1 });
+    const secondProduct = ProductFactory.build({ id: 2 });
 
     vi.spyOn(repository, "list").mockResolvedValue([firstProduct, secondProduct]);
     const response = await useCase.use();

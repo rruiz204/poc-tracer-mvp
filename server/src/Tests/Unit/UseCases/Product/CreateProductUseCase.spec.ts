@@ -10,7 +10,7 @@ describe("create product use case", () => {
   const useCase = new CreateProductUseCase(repository);
 
   it("should store product correctly when it does not already exist", async () => {
-    const product = ProductFactory.build({ id: 1, name: "testing product" });
+    const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
     vi.spyOn(repository, "find").mockResolvedValue(null);
@@ -21,7 +21,7 @@ describe("create product use case", () => {
   });
 
   it("should throw error when product already exists", async () => {
-    const product = ProductFactory.build({ id: 1, name: "testing product" });
+    const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
     vi.spyOn(repository, "find").mockResolvedValue(product);
