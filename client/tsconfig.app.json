@@ -27,6 +27,7 @@
       "@e2e/fixtures/*": ["src/tests/e2e/fixtures/*"],
       "@e2e/pages/*": ["src/tests/e2e/pages/*"],
       "@shared/*": ["src/shared/*"],
+      "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/pages/*"],
       "@core/*": ["src/core/*"],
     }
