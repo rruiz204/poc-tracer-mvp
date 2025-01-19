@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props) => {
         <div className={`py-2 px-2 rounded-full cursor-pointer ${indicatorBackground}`}></div>
       </div>
 
-      <p className="mb-2">{product.description}</p>
+      <p className="mb-2 line-clamp-3">{product.description}</p>
 
       <div className="flex justify-between items-center mb-4">
         <p className="font-semibold">${product.price}</p>
