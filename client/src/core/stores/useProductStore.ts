@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { Product } from "@core/models/Product";
-import { KhaosError } from "@core/khaos/KhaosTypes";
+import { KhaosError } from "src/khaos/KhaosTypes";
 
 type State = {
   products: Product[];
