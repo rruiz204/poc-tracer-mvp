@@ -7,7 +7,7 @@ export const ProductList = (): JSX.Element => {
   return (
     <div className="grid gap-4 h-full grid-cols-3 place-items-center">
       {products.map((product) => (
-        <ProductCard product={product}></ProductCard>
+        <ProductCard key={product.id} product={product}></ProductCard>
       ))}
     </div>
   );
