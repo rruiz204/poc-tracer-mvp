@@ -1,5 +1,5 @@
-import { Khaos } from "@core/khaos/Khaos";
-import { KhaosResponse } from "@core/khaos/KhaosTypes";
+import { Khaos } from "@khaos/Khaos";
+import { KhaosResponse } from "@khaos/KhaosTypes";
 import { Product } from "@core/models/Product";
 
 export interface ProductListResponse {

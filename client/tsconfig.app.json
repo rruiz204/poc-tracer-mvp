@@ -26,9 +26,11 @@
     "paths": {
       "@e2e/fixtures/*": ["src/tests/e2e/fixtures/*"],
       "@e2e/pages/*": ["src/tests/e2e/pages/*"],
+      "@components/*": ["src/components/*"],
       "@shared/*": ["src/shared/*"],
       "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/pages/*"],
+      "@khaos/*": ["src/khaos/*"],
       "@core/*": ["src/core/*"],
     }
   },
