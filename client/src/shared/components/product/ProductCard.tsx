@@ -26,8 +26,8 @@ export const ProductCard = ({ product }: Props) => {
       </div>
 
       <div className="flex gap-2 mb-2">
-        <Button text="Edit" icon={EditIcon}></Button>
-        <Button text="Remove" icon={RemoveIcon}></Button>
+        <Button text="Edit" icon={EditIcon} role="button"></Button>
+        <Button text="Remove" icon={RemoveIcon} role="button"></Button>
       </div>
     </div>
   );
