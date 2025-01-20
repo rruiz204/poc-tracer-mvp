@@ -8,10 +8,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import SaveIcon from "@assets/svgs/save-icon.svg";
 
 const schema = yup.object({
-  name: yup.string().required(),
-  description: yup.string().required(),
-  price: yup.number().positive().required(),
-  stock: yup.number().integer().required(),
+  name: yup.string()
+    .required("Name is a required field"),
+  description: yup.string()
+    .required("Description is a required field"),
+  price: yup.number()
+    .typeError("The price must be a valid number")
+    .positive().required(),
+  stock: yup.number()
+    .typeError("The stock must be a valid number")
+    .integer().required(),
   active: yup.boolean().required(),
 });
 
@@ -24,13 +30,13 @@ export const ProductForm = (): JSX.Element => {
   return (
     <div>
       <form onSubmit={onSubmit} className="flex flex-col gap-4 px-4 py-6 border-2 border-cs-blue-500">
-        <div className="">
+        <div>
           <Field<inputs> label="name" type="text"
             place="Enter name" register={register} error={errors.name?.message} />
         </div>
 
         <div className="flex gap-2">
-          <Field<inputs> label="price" type="text" 
+          <Field<inputs> label="price" type="text"
             place="Enter price" register={register} error={errors.price?.message} />
           <Field<inputs> label="stock" type="text"
             place="Enter stock" register={register} error={errors.stock?.message} />
