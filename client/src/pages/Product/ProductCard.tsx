@@ -1,4 +1,4 @@
-import { Button } from "../shared/Button";
+import { Button } from "@components/Button";
 import { Product } from "@core/models/Product";
 
 import EditIcon from "@assets/svgs/edit-icon.svg";
