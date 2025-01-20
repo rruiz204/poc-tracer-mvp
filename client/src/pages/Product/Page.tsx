@@ -1,6 +1,6 @@
+import { ProductList } from "./ProductList";
+import { ProductForm } from "./ProductForm";
 import { useProductEffects } from "@core/effects/useProductEffects";
-import { ProductList } from "@shared/components/product/ProductList";
-import { ProductForm } from "@shared/components/product/ProductForm";
 
 export const Product = (): JSX.Element => {
   useProductEffects();
