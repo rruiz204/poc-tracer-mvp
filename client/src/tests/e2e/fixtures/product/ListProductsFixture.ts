@@ -1,4 +1,4 @@
-import { ProductListResponse } from "@core/services/ProductService";
+import { ProductListResponse } from "@core/services/product/ProductResponse";
 
 const response: ProductListResponse = {
   path: "list",
