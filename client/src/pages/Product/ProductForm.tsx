@@ -28,7 +28,7 @@ export const ProductForm = (): JSX.Element => {
         <div className="flex flex-col gap-2">
           <label className="font-semibold">Description</label>
           <textarea rows={4} {...register("description")} placeholder="Enter description"
-            className="w-full text-black outline-none px-1"></textarea>
+            className="w-full text-black outline-none px-2"></textarea>
           { errors.description && <p className="text-red-600">{errors.description.message}</p> }
         </div>
 
