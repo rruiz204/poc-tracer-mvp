@@ -4,11 +4,21 @@ import { Checkbox } from "@components/Checkbox";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ProductSchema, ProductInputs } from "./validation";
+import { useProductStore } from "@core/stores/useProductStore";
 import SaveIcon from "@assets/svgs/save-icon.svg";
+import { Product } from "@core/models/Product";
 
 export const ProductForm = (): JSX.Element => {
-  const { register, handleSubmit, formState: { errors } } = useForm<ProductInputs>({ resolver: yupResolver(ProductSchema) });
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const { register, handleSubmit, formState: { errors } } = useForm<ProductInputs>({
+    resolver: yupResolver(ProductSchema),
+  });
+
+  const { addProduct, error } = useProductStore();
+
+  const onSubmit = handleSubmit((data) => {
+    const product: Product = {...data, id: Math.floor(Math.random() * 1000), createdAt: new Date()};
+    addProduct(product);
+  });
 
   return (
     <div>
@@ -36,6 +46,7 @@ export const ProductForm = (): JSX.Element => {
           <Checkbox<ProductInputs> label="active" register={register}></Checkbox>
         </div>
         <Button text="Save" role="submit" icon={SaveIcon}></Button>
+        { error && <p className="text-red-600 font-semibold text-center">{error.message}</p> }
       </form>
     </div>
   );
