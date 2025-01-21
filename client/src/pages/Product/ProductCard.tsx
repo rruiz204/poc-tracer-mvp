@@ -1,8 +1,5 @@
-import { Button } from "@components/Button";
 import { Product } from "@core/models/Product";
-
-import EditIcon from "@assets/svgs/edit-icon.svg";
-import RemoveIcon from "@assets/svgs/remove-icon.svg";
+import { ProductCardButtons } from "./ProductCardButtons";
 
 interface Props {
   product: Product;
@@ -25,10 +22,7 @@ export const ProductCard = ({ product }: Props) => {
         <p className="font-semibold">Stock: {product.stock}</p>
       </div>
 
-      <div className="flex gap-2 mb-2">
-        <Button text="Edit" icon={EditIcon} role="button"></Button>
-        <Button text="Remove" icon={RemoveIcon} role="button"></Button>
-      </div>
+      <ProductCardButtons id={product.id} />
     </div>
   );
 };
