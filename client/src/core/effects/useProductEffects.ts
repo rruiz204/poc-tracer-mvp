@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { ProductService } from "@core/services/ProductService";
 import { useProductStore } from "@core/stores/useProductStore";
+import { ProductService } from "@core/services/product/ProductService";
 
 export const useProductEffects = () => {
   const { setProducts, setIsLoading, setError } = useProductStore();
