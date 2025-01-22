@@ -20,7 +20,7 @@ export class ProductSeeder implements Seeder {
       const { description, price, stock } = data;
 
       const name = `${data.name}-${index}`;
-      await this.repository.store({ name, description, price, stock });
+      await this.repository.create({ name, description, price, stock });
     };
   };
 };

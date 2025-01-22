@@ -9,12 +9,12 @@ describe("create product use case", () => {
   const repository = new ProductRepository(Context);
   const useCase = new CreateProductUseCase(repository);
 
-  it("should store product correctly when it does not already exist", async () => {
+  it("should create product correctly when it does not already exist", async () => {
     const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
     vi.spyOn(repository, "find").mockResolvedValue(null);
-    vi.spyOn(repository, "store").mockResolvedValue(product);
+    vi.spyOn(repository, "create").mockResolvedValue(product);
 
     const response = await useCase.use({ name, description, price, stock });
     expect(response.id).toEqual(product.id);
@@ -25,7 +25,7 @@ describe("create product use case", () => {
     const { name, description, price, stock } = product;
 
     vi.spyOn(repository, "find").mockResolvedValue(product);
-    vi.spyOn(repository, "store");
+    vi.spyOn(repository, "create");
 
     await expect(useCase.use({ name, description, price, stock }))
       .rejects.toThrowError("This product is already registered");

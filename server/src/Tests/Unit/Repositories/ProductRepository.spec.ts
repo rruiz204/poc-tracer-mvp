@@ -11,11 +11,11 @@ describe("product repository", () => {
     await Context.product.deleteMany();
   });
 
-  it("should store a product in the database", async () => {
+  it("should create a product in the database", async () => {
     const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
-    await repository.store({ name, description, price, stock });
+    await repository.create({ name, description, price, stock });
     const data = await Context.product.findFirst({ where: { name: { equals: product.name } }});
 
     expect(data?.name).toEqual(product.name);
