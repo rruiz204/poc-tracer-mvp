@@ -1,6 +1,4 @@
-export interface CreateProductCommand {
-  name: string;
-  description: string;
-  price: number;
-  stock: number;
-};
+import type { Infer } from "@vinejs/vine/types";
+import { CreateProductSchema } from "./CreateProductSchema";
+
+export type CreateProductCommand = Infer<typeof CreateProductSchema>;
