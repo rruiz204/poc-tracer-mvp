@@ -12,3 +12,7 @@ export interface ListProductResponse extends Pick<BaseProductResponse, "products
 export interface CreateProductResponse extends Pick<BaseProductResponse, "product"> {
   path: string;
 };
+
+export interface RemoveProductResponse extends Pick<BaseProductResponse, "product"> {
+  path: string;
+};
