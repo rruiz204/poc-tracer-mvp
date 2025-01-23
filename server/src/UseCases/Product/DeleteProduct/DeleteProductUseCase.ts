@@ -1,3 +1,6 @@
+import { DeleteProductSchema } from "./DeleteProductSchema";
+import { ValidationService } from "@Services/ValidationService";
+
 import type { UseCase } from "@UseCases/UseCase";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { DeleteProductCommand } from "./DeleteProductCommand";
@@ -9,6 +12,8 @@ export class DeleteProductUseCase implements UseCase<DeleteProductCommand, Produ
   ) {};
 
   public async use(command: DeleteProductCommand): Promise<ProductDTO> {
+    await ValidationService.validate(DeleteProductSchema, command);
+
     const product = await this.repository.find({ id: { equals: command.id } });
     if (!product) throw new Error("Product not found");
 
