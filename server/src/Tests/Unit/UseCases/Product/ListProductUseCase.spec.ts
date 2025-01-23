@@ -14,13 +14,13 @@ describe("list products use case", () => {
     const secondProduct = ProductFactory.build({ id: 2 });
 
     vi.spyOn(repository, "list").mockResolvedValue([firstProduct, secondProduct]);
-    const response = await useCase.use();
+    const response = await useCase.use({});
     expect(response.length).toEqual(2);
   });
 
   it("should return an empty list when no products exist", async () => {
     vi.spyOn(repository, "list").mockResolvedValue([]);
-    const response = await useCase.use();
+    const response = await useCase.use({});
     expect(response.length).toEqual(0);
   });
 

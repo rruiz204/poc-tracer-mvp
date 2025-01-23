@@ -41,4 +41,26 @@ describe("product repository", () => {
     expect(data?.name).toEqual(product.name);
   });
 
+  it("should delete a product by its id", async () => {
+    const product = ProductFactory.build({ id: 1 });
+    const { name, description, price, stock } = product;
+
+    await Context.product.create({ data: { name, description, price, stock } });
+    const existing = await Context.product.findFirst({ where: { name: { equals: name } } });
+
+    await repository.delete({ id: existing?.id });
+    const counter = await Context.product.count();
+    expect(counter).toEqual(0);
+  });
+
+  it("should update the data of a product", async () => {
+    const product = ProductFactory.build({ id: 1 });
+    const { name, description, price, stock } = product;
+
+    await Context.product.create({ data: { name, description, price, stock } });
+    const updated = await repository.update({ name: product.name }, { price: 1000 });
+
+    expect(updated.price).toEqual(1000);
+  });
+
 });

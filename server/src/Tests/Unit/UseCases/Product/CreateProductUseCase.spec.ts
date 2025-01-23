@@ -9,7 +9,7 @@ describe("create product use case", () => {
   const repository = new ProductRepository(Context);
   const useCase = new CreateProductUseCase(repository);
 
-  it("should create product correctly when it does not already exist", async () => {
+  it("should create product correctly", async () => {
     const product = ProductFactory.build({ id: 1 });
     const { name, description, price, stock } = product;
 
