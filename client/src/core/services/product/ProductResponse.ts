@@ -1,6 +1,14 @@
 import { Product } from "@core/models/Product";
 
-export interface ProductListResponse {
-  path: string;
+interface BaseProductResponse {
+  product: Product;
   products: Product[];
+};
+
+export interface ListProductResponse extends Pick<BaseProductResponse, "products"> {
+  path: string;
+};
+
+export interface CreateProductResponse extends Pick<BaseProductResponse, "product"> {
+  path: string;
 };
