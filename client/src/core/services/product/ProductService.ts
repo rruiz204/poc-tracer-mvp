@@ -4,6 +4,7 @@ import {
   ListProductResponse,
   CreateProductResponse,
   RemoveProductResponse,
+  UpdateProductResponse,
 } from "./ProductResponse";
 
 enum Endpoint {
@@ -20,9 +21,14 @@ const create = async (): Promise<KhaosResponse<CreateProductResponse>> => {
   return await khaos.invoke<CreateProductResponse>();
 };
 
-const remove = async () => {
+const remove = async (): Promise<KhaosResponse<RemoveProductResponse>> => {
   const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "DELETE" });
   return await khaos.invoke<RemoveProductResponse>();
 };
 
-export const ProductService = Object.freeze({ list, create, remove });
+const update = async (): Promise<KhaosResponse<UpdateProductResponse>> => {
+  const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "PUT" });
+  return await khaos.invoke<UpdateProductResponse>();
+};
+
+export const ProductService = Object.freeze({ list, create, remove, update });
