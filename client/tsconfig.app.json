@@ -30,7 +30,6 @@
       "@shared/*": ["src/shared/*"],
       "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/pages/*"],
-      "@khaos/*": ["src/khaos/*"],
       "@core/*": ["src/core/*"],
     }
   },

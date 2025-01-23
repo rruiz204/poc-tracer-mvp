@@ -1,5 +1,5 @@
-import { Khaos } from "@khaos/Khaos";
-import { KhaosResponse } from "@khaos/KhaosTypes";
+import { Khaos } from "@core/khaos/Khaos";
+import { KhaosResponse } from "@core/khaos/KhaosTypes";
 import { ProductListResponse } from "./ProductResponse";
 
 const list = async (): Promise<KhaosResponse<ProductListResponse>> => {
