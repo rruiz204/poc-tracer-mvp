@@ -1,5 +1,5 @@
-import { KhaosResponse } from "@core/khaos/KhaosTypes";
-import { KhaosFactory } from "@core/khaos/KhaosFactory";
+import { KhaosResponse } from "@core/services/khaos/KhaosTypes";
+import { KhaosFactory } from "@core/services/khaos/KhaosFactory";
 import { 
   ListProductResponse,
   CreateProductResponse,
