@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 
-import { Home } from "@pages/Home/Page";
-import { Product } from "@pages/Product/Page";
+import { Home } from "@pages/Home";
+import { Product } from "@pages/Product";
 
 export const Router = (): JSX.Element => {
   return (
