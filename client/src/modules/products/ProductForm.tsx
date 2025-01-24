@@ -1,22 +1,24 @@
-import { Field } from "@components/Field";
-import { Button } from "@components/Button";
-import { Checkbox } from "@components/Checkbox";
+import { Product } from "@core/models/Product";
+import { Field } from "@components/common/Field";
+import { Button } from "@components/common/Button";
+import { Checkbox } from "@components/common/Checkbox";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ProductSchema, ProductInputs } from "./validation";
 import { useProductStore } from "@core/stores/useProductStore";
+
 import SaveIcon from "@assets/svgs/save-icon.svg";
-import { Product } from "@core/models/Product";
 
 export const ProductForm = (): JSX.Element => {
   const { register, handleSubmit, formState: { errors } } = useForm<ProductInputs>({
     resolver: yupResolver(ProductSchema),
   });
 
-  const { addProduct, error } = useProductStore();
+  const addProduct = useProductStore((state) => state.addProduct);
 
   const onSubmit = handleSubmit((data) => {
-    const product: Product = {...data, id: Math.floor(Math.random() * 1000), createdAt: new Date()};
+    const product: Product = { ...data, id: Math.floor(Math.random() * 1000), createdAt: new Date() };
     addProduct(product);
   });
 
@@ -39,14 +41,15 @@ export const ProductForm = (): JSX.Element => {
           <label className="font-semibold">Description</label>
           <textarea rows={4} {...register("description")} placeholder="Enter description"
             className="w-full text-black outline-none px-2"></textarea>
-          { errors.description && <p className="text-red-600">{errors.description.message}</p> }
+          {errors.description && <p className="text-red-600">{errors.description.message}</p>}
         </div>
 
         <div className="flex justify-end">
           <Checkbox<ProductInputs> label="active" register={register}></Checkbox>
         </div>
-        <Button text="Save" role="submit" icon={SaveIcon}></Button>
-        { error && <p className="text-red-600 font-semibold text-center">{error.message}</p> }
+
+        <Button text="Save" role="submit" icon={SaveIcon} theme="primary"></Button>
+        {/* {error && <p className="text-red-600 font-semibold text-center">{error.message}</p>} */}
       </form>
     </div>
   );
