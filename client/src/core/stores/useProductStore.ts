@@ -1,20 +1,27 @@
 import { create } from "zustand";
 import { Product } from "@core/models/Product";
+import { KhaosError } from "@core/services/khaos/KhaosTypes";
 
 type State = {
   products: Product[];
+  isLoading: boolean;
+  error?: KhaosError;
 };
 
 type Actions = {
   setProducts: (products: Product[]) => void;
+  setIsLoading: (isLoading: boolean) => void;
   addProduct: (product: Product) => void;
+  setError: (error: KhaosError) => void;
   removeProduct: (id: number) => void;
 };
 
 export const useProductStore = create<State & Actions>((set) => ({
-  products: [],
+  products: [], isLoading: false, error: undefined,
 
+  setError: (error) => set((state) => ({ ...state, error })),
   setProducts: (products) => set((state) => ({ ...state, products })),
+  setIsLoading: (isLoading) => set((state) => ({ ...state, isLoading })),
 
   addProduct: (product) => set((state) => {
     const existing = state.products.find((p) => p.name == product.name);
