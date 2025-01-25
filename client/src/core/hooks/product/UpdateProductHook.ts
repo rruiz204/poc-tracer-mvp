@@ -2,20 +2,20 @@ import { useState } from "react";
 import { KhaosError } from "@core/services/khaos/KhaosTypes";
 import { useProductStore } from "@core/stores/useProductStore";
 import { ProductService } from "@core/services/product/ProductService";
-import { CreateProductPayload } from "@core/services/product/ProductPayload";
+import { UpdateProductPayload } from "@core/services/product/ProductPayload";
 
-export const CreateProductHook = () => {
+export const UpdateProductHook = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<KhaosError | undefined>(undefined);
 
-  const addProduct = useProductStore((state) => state.addProduct);
+  const updateProduct = useProductStore((state) => state.updateProduct);
 
-  const handler = async (payload: CreateProductPayload): Promise<void> => {
+  const handler = async (payload: UpdateProductPayload): Promise<void> => {
     setLoading(true);
 
-    const response = await ProductService.create(payload);
+    const response = await ProductService.update(payload);
     if (response.error) setError(response.error);
-    if (response.data) addProduct(response.data.product);
+    if (response.data) updateProduct(response.data.product);
 
     setLoading(false);
   };

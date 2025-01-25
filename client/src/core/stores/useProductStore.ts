@@ -9,10 +9,12 @@ type State = {
 };
 
 type Actions = {
+  setError: (error: KhaosError) => void;
   setProducts: (products: Product[]) => void;
   setIsLoading: (isLoading: boolean) => void;
+
+  updateProduct: (product: Product) => void;
   addProduct: (product: Product) => void;
-  setError: (error: KhaosError) => void;
   removeProduct: (id: number) => void;
 };
 
@@ -24,25 +26,19 @@ export const useProductStore = create<State & Actions>((set) => ({
   setIsLoading: (isLoading) => set((state) => ({ ...state, isLoading })),
 
   addProduct: (product) => set((state) => {
-    const existing = state.products.find((p) => p.name == product.name);
+    const products = [...state.products, product];
+    return { ...state, products };
+  }),
 
-    if (existing) return {...state, error: {
-      message: "Product already exists",
-      details: "A product with this name already exists in the store",
-    }};
-
-    return { ...state, products: [...state.products, product], error: undefined };
+  updateProduct: (product) => set((state) => {
+    const index = state.products.findIndex((p) => p.id == product.id);
+    const products = state.products;
+    products[index] = product;
+    return { ...state, products };
   }),
 
   removeProduct: (id) => set((state) => {
-    const existing = state.products.find((p) => p.id == id);
-
-    if (!existing) return { ...state, error: {
-      message: "Product not found",
-      details: "The product you are trying to remove does not exist in the store",
-    }};
-
     const products = state.products.filter((p) => p.id != id);
-    return { ...state, products, error: undefined };
+    return { ...state, products };
   }),
 }));
