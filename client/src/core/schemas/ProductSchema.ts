@@ -14,4 +14,4 @@ export const ProductSchema = yup.object({
   active: yup.boolean().required(),
 });
 
-export type ProductInputs = yup.InferType<typeof ProductSchema>;
+export type ProductPayload = yup.InferType<typeof ProductSchema>;
