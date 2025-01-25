@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { PageLayout } from "@components/layouts/PageLayout";
-import { ProductForm } from "@modules/products/ProductForm";
 import { ProductList } from "@modules/products/ProductsList";
+import { ProductOptions } from "@modules/products/ProductOptions";
 import { ListProductHook } from "@core/hooks/product/ListProductHook";
 
 export const Product = (): JSX.Element => {
@@ -17,9 +17,9 @@ export const Product = (): JSX.Element => {
         Products
       </h1>
 
-      <div className="grid gap-5 grid-cols-[2fr_1fr] text-white">
-        <ProductList></ProductList>
-        <ProductForm></ProductForm>
+      <div className="flex flex-col gap-8">
+        <ProductOptions />
+        <ProductList />
       </div>
     </PageLayout>
   );

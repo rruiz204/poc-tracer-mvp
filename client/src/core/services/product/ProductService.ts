@@ -1,3 +1,4 @@
+import { ProductPayload } from "@core/schemas/ProductSchema";
 import { KhaosResponse } from "@core/services/khaos/KhaosTypes";
 import { KhaosFactory } from "@core/services/khaos/KhaosFactory";
 import { 
@@ -16,8 +17,9 @@ const list = async (): Promise<KhaosResponse<ListProductResponse>> => {
   return await khaos.invoke<ListProductResponse>();
 };
 
-const create = async (): Promise<KhaosResponse<CreateProductResponse>> => {
+const create = async (payload: ProductPayload): Promise<KhaosResponse<CreateProductResponse>> => {
   const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "POST" });
+  khaos.setBody(payload);
   return await khaos.invoke<CreateProductResponse>();
 };
 
