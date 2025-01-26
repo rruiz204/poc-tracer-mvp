@@ -4,21 +4,21 @@ import { useProductStore } from "@core/stores/useProductStore";
 import { ProductService } from "@core/services/product/ProductService";
 import { CreateProductPayload } from "@core/services/product/ProductPayload";
 
-export const CreateProductHook = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+export const useCreateProduct = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<KhaosError | undefined>(undefined);
 
   const addProduct = useProductStore((state) => state.addProduct);
 
-  const handler = async (payload: CreateProductPayload): Promise<void> => {
-    setLoading(true);
+  const CreateProductHandler = async (payload: CreateProductPayload) => {
+    setIsLoading(true);
 
     const response = await ProductService.create(payload);
     if (response.error) setError(response.error);
     if (response.data) addProduct(response.data.product);
-
-    setLoading(false);
+    
+    setIsLoading(false);
   };
 
-  return { loading, error, handler };
+  return { CreateProductHandler, isLoading, error };
 };

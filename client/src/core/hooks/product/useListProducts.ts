@@ -1,10 +1,10 @@
 import { useProductStore } from "@core/stores/useProductStore";
 import { ProductService } from "@core/services/product/ProductService";
 
-export const ListProductHook = () => {
+export const useListProduct = () => {
   const { setProducts, setIsLoading, setError } = useProductStore();
 
-  const handler = async (): Promise<void> => {
+  const ListProductHandler = async () => {
     setIsLoading(true);
 
     const response = await ProductService.list();
@@ -14,5 +14,5 @@ export const ListProductHook = () => {
     setIsLoading(false);
   };
 
-  return { handler };
+  return { ListProductHandler };
 };

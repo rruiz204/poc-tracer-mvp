@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { PageLayout } from "@components/layouts/PageLayout";
 import { ProductList } from "@modules/products/ProductsList";
 import { ProductOptions } from "@modules/products/ProductOptions";
-import { ListProductHook } from "@core/hooks/product/ListProductHook";
+import { useListProduct } from "@core/hooks/product/useListProducts";
 
 export const Product = (): JSX.Element => {
-  const { handler: ListProductHandler } = ListProductHook();
+  const { ListProductHandler } = useListProduct();
 
   useEffect(() => {
     ListProductHandler();
