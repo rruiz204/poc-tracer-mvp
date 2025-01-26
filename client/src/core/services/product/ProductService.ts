@@ -8,6 +8,7 @@ import {
 } from "./ProductResponse";
 import {
   CreateProductPayload,
+  DeleteProductPayload,
   UpdateProductPayload,
 } from "./ProductPayload";
 
@@ -26,8 +27,9 @@ const create = async (payload: CreateProductPayload): Promise<KhaosResponse<Crea
   return await khaos.invoke<CreateProductResponse>();
 };
 
-const remove = async (): Promise<KhaosResponse<RemoveProductResponse>> => {
+const remove = async (payload: DeleteProductPayload): Promise<KhaosResponse<RemoveProductResponse>> => {
   const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "DELETE" });
+  khaos.setBody(payload);
   return await khaos.invoke<RemoveProductResponse>();
 };
 

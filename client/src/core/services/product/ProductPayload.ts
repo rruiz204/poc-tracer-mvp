@@ -1,7 +1,7 @@
 import { Product } from "@core/models/Product"
 
-interface BaseProductPayload extends Product {};
+export interface CreateProductPayload extends Omit<Product, "id" | "createdAt"> {};
 
-export interface CreateProductPayload extends Omit<BaseProductPayload, "id" | "createdAt"> {};
+export interface UpdateProductPayload extends Omit<Product, "createdAt"> {};
 
-export interface UpdateProductPayload extends Omit<BaseProductPayload, "createdAt"> {};
+export interface DeleteProductPayload extends Pick<Product, "id"> {};
