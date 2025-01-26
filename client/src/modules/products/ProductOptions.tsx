@@ -1,11 +1,11 @@
 import { Button } from "@components/common/Button";
-import { ListProductHook } from "@core/hooks/product/ListProductHook";
+import { useListProduct } from "@core/hooks/product/useListProducts";
 
 import AddIcon from "@assets/icons/add-icon.svg";
 import RefreshIcon from "@assets/icons/refresh-icon.svg";
 
 export const ProductOptions = (): JSX.Element => {
-  const { handler: ListProductHandler } = ListProductHook();
+  const { ListProductHandler } = useListProduct();
 
   return (
     <div className="flex gap-3">
