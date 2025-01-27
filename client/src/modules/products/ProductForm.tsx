@@ -5,25 +5,29 @@ import { Button } from "@components/common/Button";
 import { Checkbox } from "@components/common/Checkbox";
 import { TextArea } from "@components/common/TextArea";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useProductStore } from "@core/stores/useProductStore";
 import { ProductSchema, ProductSchemaType } from "@core/schemas/ProductSchema";
+
 import SaveIcon from "@assets/svgs/save-icon.svg";
 
-export const ProductForm = (): JSX.Element => {
+interface Props {
+  product?: Product;
+};
+
+interface Actions {
+  onSubmit: (data: ProductSchemaType) => Promise<void>;
+};
+
+export const ProductForm = ({ onSubmit, product }: Props & Actions): JSX.Element => {
   const { register, handleSubmit, formState: { errors } } = useForm<ProductSchemaType>({
     resolver: yupResolver(ProductSchema),
+    defaultValues: { ...product },
   });
 
-  const addProduct = useProductStore((state) => state.addProduct);
-
-  const onSubmit = handleSubmit((data) => {
-    const product: Product = { ...data, id: Math.floor(Math.random() * 1000), createdAt: new Date() };
-    addProduct(product);
-  });
+  const SubmitHandler = handleSubmit(onSubmit);
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="flex flex-col gap-4 px-4 py-6 border-2 border-cs-blue-500">
+      <form onSubmit={SubmitHandler} className="flex flex-col gap-4 px-4 py-6">
         <div>
           <Field<ProductSchemaType> label="name" type="text"
             place="Enter name" register={register} error={errors.name?.message} />
@@ -40,7 +44,7 @@ export const ProductForm = (): JSX.Element => {
           place="Enter description" error={errors.description?.message} />
 
         <div className="flex justify-end">
-          <Checkbox<ProductSchemaType> label="active" register={register}></Checkbox>
+          <Checkbox<ProductSchemaType> label="active" register={register} />
         </div>
 
         <Button text="Save" role="submit" icon={SaveIcon} theme="primary"></Button>
