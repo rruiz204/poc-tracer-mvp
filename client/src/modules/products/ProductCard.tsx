@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { ProductForm } from "./ProductForm";
 import { Product } from "@core/models/Product";
+import { Modal } from "@components/common/Modal";
 import { Button } from "@components/common/Button";
 import { useProductStore } from "@core/stores/useProductStore";
+import { ProductSchemaType } from "@core/schemas/ProductSchema";
 
 import EditIcon from "@assets/svgs/edit-icon.svg";
 import CancelIcon from "@assets/svgs/cancel-icon.svg";
@@ -16,15 +19,20 @@ export const ProductCard = ({ product }: Props): JSX.Element => {
   const [confirm, setConfirm] = useState<boolean>(false);
   const ToggleConfirm = () => setConfirm(!confirm);
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggleIsOpen = () => setIsOpen(!isOpen);
+
   const indicator = product.active ? "bg-green-400" : "bg-red-400";
   const removeProduct = useProductStore((state) => state.removeProduct);
+  const updateProduct = useProductStore((state) => state.updateProduct);
 
-  const RemoveHandler = () => {
-    removeProduct(product.id);
-  };
+  const RemoveHandler = () => removeProduct(product.id);
+  const EditHandler = () => toggleIsOpen();
 
-  const EditHandler = () => {
-    console.log("edit");
+  const SubmitHandler = async (data: ProductSchemaType) => {
+    const updated = { ...data, id: product.id, createdAt: new Date() };
+    updateProduct(updated);
+    toggleIsOpen();
   };
 
   return (
@@ -54,6 +62,10 @@ export const ProductCard = ({ product }: Props): JSX.Element => {
         {confirm && <Button text="Confirm" icon={ConfirmIcon} handler={RemoveHandler}
           role="button" theme="negative" />}
       </div>
+
+      <Modal isOpen={isOpen} onClose={toggleIsOpen} title="Update product">
+        <ProductForm onSubmit={SubmitHandler} product={product} />
+      </Modal>
     </div>
   );
 };
