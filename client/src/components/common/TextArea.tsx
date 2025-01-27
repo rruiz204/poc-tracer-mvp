@@ -6,12 +6,11 @@ interface Props<V extends FieldValues> {
   cols?: number;
   error?: string;
   place?: string;
-  value?: any;
   label: Path<V>;
   register: UseFormRegister<V>;
 };
 
-export const TextArea = <V extends FieldValues>({ label, error, rows, cols, register, place, value }: Props<V>): JSX.Element => {
+export const TextArea = <V extends FieldValues>({ label, error, rows, cols, register, place }: Props<V>): JSX.Element => {
   const capitalized = FormatHelper.capitalize(label);
 
   return (
@@ -19,7 +18,7 @@ export const TextArea = <V extends FieldValues>({ label, error, rows, cols, regi
       <label className="font-semibold">{capitalized}</label>
 
       <textarea rows={rows} cols={cols} {...register(label)} placeholder={place}
-        value={value} className="w-full text-black outline-none px-2"/>
+        className="w-full text-black outline-none px-2"/>
 
       { error && <p className="text-red-600">{error}</p> }
     </div>
