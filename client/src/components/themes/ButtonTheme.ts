@@ -23,13 +23,13 @@ export const ButtonThemes: Themes = {
     txtColor: "text-black"
   },
   positive: {
-    bgColor: "#00c853",
-    bgHover: "",
+    bgColor: "bg-green-500",
+    bgHover: "hover:bg-green-600",
     txtColor: "text-white"
   },
   negative: {
-    bgColor: "#d32f2f",
-    bgHover: "",
+    bgColor: "bg-red-500",
+    bgHover: "hover:bg-red-600",
     txtColor: "text-white"
   },
 };

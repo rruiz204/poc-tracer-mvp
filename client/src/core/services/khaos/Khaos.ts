@@ -10,7 +10,7 @@ export class Khaos implements IKhaos {
   };
 
   public setBody(body: any): IKhaos {
-    this.options.body = body;
+    this.options.body = JSON.stringify(body);
     return this;
   };
 
