@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ProductForm } from "./ProductForm";
 import { Modal } from "@components/common/Modal";
 import { Button } from "@components/common/Button";
-import { useProductStore } from "@core/stores/useProductStore";
 import { ProductSchemaType } from "@core/schemas/ProductSchema";
 import { useListProduct } from "@core/hooks/product/useListProducts";
+import { useCreateProduct } from "@core/hooks/product/useCreateProduct";
 
 import AddIcon from "@assets/icons/add-icon.svg";
 import RefreshIcon from "@assets/icons/refresh-icon.svg";
@@ -14,11 +14,10 @@ export const ProductOptions = (): JSX.Element => {
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
   const { ListProductHandler } = useListProduct();
-  const addProduct = useProductStore((state) => state.addProduct);
+  const { CreateProductHandler } = useCreateProduct();
 
   const SubmitHandler = async (data: ProductSchemaType) => {
-    const created = { ...data, id: Math.floor(Math.random() * 1000), createdAt: new Date() };
-    addProduct(created);
+    await CreateProductHandler(data);
     toggleIsOpen();
   };
 
