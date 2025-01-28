@@ -5,6 +5,7 @@ import { Modal } from "@components/common/Modal";
 import { Button } from "@components/common/Button";
 import { useProductStore } from "@core/stores/useProductStore";
 import { ProductSchemaType } from "@core/schemas/ProductSchema";
+import { useUpdateProduct } from "@core/hooks/product/useUpdateProduct";
 
 import EditIcon from "@assets/svgs/edit-icon.svg";
 import CancelIcon from "@assets/svgs/cancel-icon.svg";
@@ -24,14 +25,14 @@ export const ProductCard = ({ product }: Props): JSX.Element => {
 
   const indicator = product.active ? "bg-green-400" : "bg-red-400";
   const removeProduct = useProductStore((state) => state.removeProduct);
-  const updateProduct = useProductStore((state) => state.updateProduct);
 
   const RemoveHandler = () => removeProduct(product.id);
   const EditHandler = () => toggleIsOpen();
 
+  const { UpdateProductHandler } = useUpdateProduct();
+
   const SubmitHandler = async (data: ProductSchemaType) => {
-    const updated = { ...data, id: product.id, createdAt: new Date() };
-    updateProduct(updated);
+    await UpdateProductHandler({ ...data, id: product.id });
     toggleIsOpen();
   };
 
