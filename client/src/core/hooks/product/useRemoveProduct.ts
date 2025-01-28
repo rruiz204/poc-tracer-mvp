@@ -4,7 +4,7 @@ import { useProductStore } from "@core/stores/useProductStore";
 import { ProductService } from "@core/services/product/ProductService";
 import { DeleteProductPayload } from "@core/services/product/ProductPayload";
 
-export const useDeleteProduct = () => {
+export const useRemoveProduct = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<KhaosError | undefined>(undefined);
 
