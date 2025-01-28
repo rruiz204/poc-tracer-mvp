@@ -3,9 +3,9 @@ import { ProductForm } from "./ProductForm";
 import { Product } from "@core/models/Product";
 import { Modal } from "@components/common/Modal";
 import { Button } from "@components/common/Button";
-import { useProductStore } from "@core/stores/useProductStore";
 import { ProductSchemaType } from "@core/schemas/ProductSchema";
 import { useUpdateProduct } from "@core/hooks/product/useUpdateProduct";
+import { useRemoveProduct } from "@core/hooks/product/useRemoveProduct";
 
 import EditIcon from "@assets/svgs/edit-icon.svg";
 import CancelIcon from "@assets/svgs/cancel-icon.svg";
@@ -17,19 +17,22 @@ interface Props {
 };
 
 export const ProductCard = ({ product }: Props): JSX.Element => {
+  const indicator = product.active ? "bg-green-400" : "bg-red-400";
+
   const [confirm, setConfirm] = useState<boolean>(false);
   const ToggleConfirm = () => setConfirm(!confirm);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
-  const indicator = product.active ? "bg-green-400" : "bg-red-400";
-  const removeProduct = useProductStore((state) => state.removeProduct);
+  const { UpdateProductHandler } = useUpdateProduct();
+  const { RemoveProductHandler } = useRemoveProduct();
 
-  const RemoveHandler = () => removeProduct(product.id);
   const EditHandler = () => toggleIsOpen();
 
-  const { UpdateProductHandler } = useUpdateProduct();
+  const RemoveHandler = async () => {
+    await RemoveProductHandler({ id: product.id });
+  };
 
   const SubmitHandler = async (data: ProductSchemaType) => {
     await UpdateProductHandler({ ...data, id: product.id });
@@ -51,7 +54,7 @@ export const ProductCard = ({ product }: Props): JSX.Element => {
       </div>
 
       <div className="flex gap-2 mb-2">
-        {!confirm && <Button text="Edit" icon={EditIcon} handler={EditHandler} 
+        {!confirm && <Button text="Edit" icon={EditIcon} handler={EditHandler}
           role="button" theme="primary" />}
 
         {!confirm && <Button text="Remove" icon={RemoveIcon} handler={ToggleConfirm}
