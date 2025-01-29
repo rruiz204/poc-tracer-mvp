@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+/* import { expect, test } from "@playwright/test";
 import { ListProductPage } from "@e2e/pages/product/ListProductPage";
 
 test.describe("List Products", () => {
@@ -19,4 +19,4 @@ test.describe("List Products", () => {
     const cards = await listProductPage.getProductCards();
     await expect(cards).toHaveCount(2);
   });
-});
+}); */
