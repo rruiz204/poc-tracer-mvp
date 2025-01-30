@@ -9,7 +9,9 @@ export const ProductList = (): JSX.Element => {
     <div className="flex justify-center items-center">
       {isLoading && <img src={LoadingIcon} width={60} height={60} className="pt-32" />}
 
-      {!isLoading && !error &&
+      {!isLoading && !error && products.length == 0 && <p>There is not products</p>}
+
+      {!isLoading && !error && products.length > 0 &&
       <div className="flex flex-wrap justify-center gap-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product}></ProductCard>
