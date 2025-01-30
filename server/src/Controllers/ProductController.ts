@@ -19,21 +19,21 @@ export class ProductController {
 
   public async list(req: Request, res: Response) {
     const products = await this.listProductUseCase.use({});
-    res.status(200).json({ path: "index", products });
+    res.status(200).json({ products });
   };
 
   public async create(req: Request, res: Response) {
     const product = await this.createProductUseCase.use(req.body);
-    res.status(200).json({ path: "create", product });
+    res.status(200).json({ product });
   };
 
   public async update(req: Request, res: Response) {
     const product = await this.updateProductUseCase.use(req.body);
-    res.status(200).json({ path: "update", product });
+    res.status(200).json({ product });
   };
 
   public async delete(req: Request, res: Response) {
     const product = await this.deleteProductUseCase.use(req.body);
-    res.status(200).json({ path: "delete", product });
+    res.status(200).json({ product });
   };
 };

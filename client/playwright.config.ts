@@ -7,6 +7,7 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:5000",
     browserName: "firefox",
+    testIdAttribute: "test-id",
   },
   webServer: {
     command: "bun run dev",

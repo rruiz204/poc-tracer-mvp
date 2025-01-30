@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { HttpMethod } from "@core/services/khaos/KhaosTypes";
 
-interface MockArgs<Fixture> {
+export interface MockArgs<Fixture> {
   status: number;
   endpoint: string;
   fixture: Fixture;
