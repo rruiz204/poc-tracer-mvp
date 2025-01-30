@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { ListProductsFixture } from "@e2e/fixtures/product/ListProductsFixture";
 
 test.describe("Product Page", () => {
@@ -15,5 +15,11 @@ test.describe("Product Page", () => {
     });
 
     await page.goto("/product");
+
+    const cards = page.getByTestId("product-card");
+    await expect(cards).toHaveCount(3);
+
+    const secondCard = page.getByTestId("product-card-name").nth(1);
+    await expect(secondCard).toHaveText(ListProductsFixture.positive.products[1].name);
   });
 });
