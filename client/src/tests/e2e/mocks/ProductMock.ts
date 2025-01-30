@@ -1,9 +1,10 @@
 import { Page } from "@playwright/test";
-import { MockHelper } from "@e2e/helpers/MockHelper";
+import { MockHelper, MockArgs } from "@e2e/helpers/MockHelper";
 import { KhaosResponse } from "@core/services/khaos/KhaosTypes";
 import { ListProductResponse } from "@core/services/product/ProductResponse";
 
 type ListFixture = KhaosResponse<ListProductResponse>;
+type ListMockArgs = Pick<MockArgs<ListFixture>, "status" | "fixture">;
 
 export class ProductMock {
   private helper: MockHelper;
@@ -12,8 +13,7 @@ export class ProductMock {
     this.helper = new MockHelper(page);
   };
 
-  // fix args format
-  public async mockListProducts(status: number, fixture: ListFixture): Promise<void> {
+  public async mockListProducts({ status, fixture }: ListMockArgs): Promise<void> {
     await this.helper.mock<ListFixture>({
       endpoint: "**/api/product",
       status: status,
