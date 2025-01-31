@@ -9,7 +9,7 @@ export class ProductPage {
     await this.page.goto("/product");
   };
 
-  public async getProductCards() {
-    return await this.page.getByTestId(this.cardTestId).all();
+  public getProductCards() {
+    return this.page.getByTestId(this.cardTestId);
   };
 };
