@@ -1,10 +1,9 @@
 import { Page } from "@playwright/test";
-import { MockHelper, MockArgs } from "@e2e/helpers/MockHelper";
-import { KhaosResponse } from "@core/services/khaos/KhaosTypes";
+import { MockHelper } from "@e2e/mocks/MockHelper";
+import { KhaosError } from "@core/services/khaos/KhaosTypes";
 import { ListProductResponse } from "@core/services/product/ProductResponse";
 
-type ListFixture = KhaosResponse<ListProductResponse>;
-type ListMockArgs = Pick<MockArgs<ListFixture>, "status" | "fixture">;
+type ListProductMockResponse = ListProductResponse | KhaosError;
 
 export class ProductMock {
   private helper: MockHelper;
@@ -13,12 +12,12 @@ export class ProductMock {
     this.helper = new MockHelper(page);
   };
 
-  public async mockListProducts({ status, fixture }: ListMockArgs): Promise<void> {
-    await this.helper.mock<ListFixture>({
+  public async mockListProducts(status: number, fixture: ListProductMockResponse) {
+    await this.helper.mock<ListProductMockResponse>({
       endpoint: "**/api/product",
-      status: status,
       fixture: fixture,
-      httpMethod: "GET",
+      status: status,
+      http: "GET",
     });
   };
 };
