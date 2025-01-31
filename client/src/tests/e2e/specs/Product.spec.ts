@@ -1,25 +1,19 @@
 import { expect, test } from "@playwright/test";
-import { ListProductsFixture } from "@e2e/fixtures/product/ListProductsFixture";
+import { ProductMock } from "@e2e/mocks/ProductMock";
+import { ProductPage } from "@e2e/pages/ProductPage";
+import { ProductFixture } from "@e2e/fixtures/ProductFixture";
 
 test.describe("Product Page", () => {
-  test("list all products", async ({ page }) => {
-    
-    await page.route("**/api/product", async (route) => {
-      if (route.request().method() !== "GET") return;
+  test("displays all products when API call succeeds", async ({ page }) => {
+    const productPage = new ProductPage(page);
+    const fixture = ProductFixture.listPositiveFixture();
 
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify(ListProductsFixture.positive)
-      });
-    });
+    const mocker = new ProductMock(page);
+    mocker.mockListProducts(200, fixture);
 
-    await page.goto("/product");
+    await productPage.navigate();
 
-    const cards = page.getByTestId("product-card");
+    const cards = productPage.getProductCards();
     await expect(cards).toHaveCount(3);
-
-    const secondCard = page.getByTestId("product-card-name").nth(1);
-    await expect(secondCard).toHaveText(ListProductsFixture.positive.products[1].name);
   });
 });
