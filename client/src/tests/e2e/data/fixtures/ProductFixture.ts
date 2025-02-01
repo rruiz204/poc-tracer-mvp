@@ -12,4 +12,16 @@ export class ProductFixture {
 
     return fixture.positive({ products: [product1, product2, product3] });
   };
+
+  public static listEmptyFixture() {
+    const fixture = FixtureFactory.build<ListProductResponse>();
+    return fixture.positive({ products: [] });
+  };
+
+  public static listNegativeFixture() {
+    const fixture = FixtureFactory.build<ListProductResponse>();
+    const details = "Something went wrong";
+    const message = "Something went wrong";
+    return fixture.negative({ details, message });
+  };
 };
