@@ -1,10 +1,10 @@
 import { useEffect } from "react";
+import { ProductList } from "./ProductsList";
+import { ProductOptions } from "./ProductOptions";
 import { PageLayout } from "@components/layouts/PageLayout";
-import { ProductList } from "@modules/products/ProductsList";
-import { ProductOptions } from "@modules/products/ProductOptions";
 import { useListProduct } from "@core/hooks/product/useListProducts";
 
-export const Product = (): JSX.Element => {
+export const ProductPage = (): JSX.Element => {
   const { ListProductHandler } = useListProduct();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export const Product = (): JSX.Element => {
 
   return (
     <PageLayout>
-      <h1 className="text-3xl font-semibold mb-8 text-white">
+      <h1 test-id="page-title" className="text-3xl font-semibold mb-8 text-white">
         Products
       </h1>
 
