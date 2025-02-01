@@ -14,13 +14,13 @@ export const TextArea = <V extends FieldValues>({ label, error, rows, cols, regi
   const capitalized = FormatHelper.capitalize(label);
 
   return (
-    <div className="flex flex-col gap-2">
-      <label className="font-semibold">{capitalized}</label>
+    <div test-id="textarea" className="flex flex-col gap-2">
+      <label test-id="textarea-label" className="font-semibold">{capitalized}</label>
 
       <textarea rows={rows} cols={cols} {...register(label)} placeholder={place}
-        className="w-full text-black outline-none px-2"/>
+        test-id="textarea-input" className="w-full text-black outline-none px-2"/>
 
-      { error && <p className="text-red-600">{error}</p> }
+      { error && <p test-id="textarea-error" className="text-red-600">{error}</p> }
     </div>
   );
 };
