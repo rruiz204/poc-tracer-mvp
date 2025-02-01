@@ -15,7 +15,11 @@ export const useUpdateProduct = () => {
 
     const response = await ProductService.update(payload);
     if (response.error) setError(response.error);
-    if (response.data) updateProduct(response.data.product);
+
+    if (response.data) {
+      setError(undefined);
+      updateProduct(response.data.product);
+    };
 
     setIsLoading(false);
   };
