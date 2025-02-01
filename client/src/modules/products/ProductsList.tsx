@@ -7,25 +7,25 @@ export const ProductList = (): JSX.Element => {
   const { products, isLoading, error } = useProductStore();
 
   return (
-    <div test-id="list" className="flex justify-center items-center">
+    <div test-id="product-list" className="flex justify-center items-center">
       {isLoading && <img src={LoadingIcon} width={60} height={60} className="mt-36 animate-spin" />}
 
       {error &&
-        <div className="mt-48 text-white" test-id="list-error-message">
+        <div className="mt-48 text-white" test-id="product-list-error-message">
           <img src={SadFaceIcon} width={200} height={200} className="mx-auto" />
           <p className="text-center font-semibold text-4xl">{error.message}</p>
         </div>
       }
 
       {!isLoading && !error && products.length == 0 &&
-        <div className="mt-48 text-white" test-id="list-empty-message">
+        <div className="mt-48 text-white" test-id="product-list-empty-message">
           <img src={SadFaceIcon} width={200} height={200} className="mx-auto" />
           <p className="text-center font-semibold text-4xl">There are no products</p>
         </div>
       }
 
       {!isLoading && !error && products.length > 0 &&
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4" test-id="product-list-content">
           {products.map((product) => (
             <ProductCard key={product.id} product={product}></ProductCard>
           ))}

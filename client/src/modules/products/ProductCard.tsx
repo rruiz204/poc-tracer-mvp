@@ -40,17 +40,17 @@ export const ProductCard = ({ product }: Props): JSX.Element => {
   };
 
   return (
-    <div test-id="card" className="border-2 border-cs-blue-700 w-[300px] py-2 px-4 rounded-md text-white">
+    <div test-id="product-card" className="border-2 border-cs-blue-700 w-[300px] py-2 px-4 rounded-md text-white">
       <div className="flex justify-between items-center">
-        <p test-id="card-name" className="mb-2 font-semibold text-xl">{product.name}</p>
+        <p test-id="product-card-name" className="mb-2 font-semibold text-xl">{product.name}</p>
         <div className={`py-2 px-2 rounded-full cursor-pointer ${indicator}`}></div>
       </div>
 
       <p className="mb-2 line-clamp-3">{product.description}</p>
 
       <div className="flex justify-between items-center mb-4">
-        <p test-id="card-price" className="font-semibold">${product.price}</p>
-        <p test-id="card-stock" className="font-semibold">Stock: {product.stock}</p>
+        <p test-id="product-card-price" className="font-semibold">${product.price}</p>
+        <p test-id="product-card-stock" className="font-semibold">Stock: {product.stock}</p>
       </div>
 
       <div className="flex gap-2 mb-2">

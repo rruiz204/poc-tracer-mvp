@@ -26,7 +26,7 @@ export const ProductForm = ({ onSubmit, product }: Props & Actions): JSX.Element
   const SubmitHandler = handleSubmit(onSubmit);
 
   return (
-    <div>
+    <div test-id="product-form">
       <form onSubmit={SubmitHandler} className="flex flex-col gap-4 px-4 py-6">
         <div>
           <Field<ProductSchemaType> label="name" type="text"
