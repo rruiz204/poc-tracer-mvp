@@ -66,4 +66,14 @@ test.describe("Product Page", () => {
     const cards = productPage.getProductCards();
     await expect(cards).toHaveCount(3);
   });
+
+  test("pending...", async ({ page }) => {
+    const productPage = new ProductPage(page);
+    const fixture = ProductFixture.editPositiveFixture();
+
+    await productPage.navigate();
+
+    const mocker = new ProductMock(page);
+    mocker.mockUpdateProduct(200, fixture);
+  });
 });
