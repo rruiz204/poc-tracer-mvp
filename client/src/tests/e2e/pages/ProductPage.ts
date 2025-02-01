@@ -1,8 +1,6 @@
 import { Page } from "@playwright/test";
 
 export class ProductPage {
-  private cardTestId = "product-card";
-
   constructor(private page: Page) {};
 
   public async navigate() {
@@ -10,6 +8,22 @@ export class ProductPage {
   };
 
   public getProductCards() {
-    return this.page.getByTestId(this.cardTestId);
+    return this.page.getByTestId("card");
+  };
+
+  public getErrorMessage() {
+    return this.page.getByTestId("list-error-message");
+  };
+
+  public getEmptyMessage() {
+    return this.page.getByTestId("list-empty-message");
+  };
+
+  public getRefreshButton() {
+    return this.page.getByTestId("button").filter({ hasText: "Refresh" });
+  };
+
+  public getNewProductButton() {
+    return this.page.getByTestId("button").filter({ hasText: "New Product" });
   };
 };

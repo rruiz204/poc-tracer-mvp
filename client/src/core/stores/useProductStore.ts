@@ -9,7 +9,7 @@ type State = {
 };
 
 type Actions = {
-  setError: (error: KhaosError) => void;
+  setError: (error?: KhaosError) => void;
   setProducts: (products: Product[]) => void;
   setIsLoading: (isLoading: boolean) => void;
 

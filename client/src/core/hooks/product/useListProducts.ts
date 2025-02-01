@@ -8,8 +8,16 @@ export const useListProduct = () => {
     setIsLoading(true);
 
     const response = await ProductService.list();
-    if (response.error) setError(response.error);
-    if (response.data) setProducts(response.data.products);
+
+    if (response.error) {
+      setProducts([]);
+      setError(response.error);
+    };
+
+    if (response.data) {
+      setError(undefined);
+      setProducts(response.data.products);
+    };
 
     setIsLoading(false);
   };
