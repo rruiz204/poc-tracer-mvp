@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProductForm } from "./ProductForm";
-import { Modal } from "@components/common/Modal";
-import { Button } from "@components/common/Button";
+import { Modal } from "@components/common/atoms/Modal";
+import { Button } from "@components/common/atoms/Button";
 import { ProductSchemaType } from "@core/schemas/ProductSchema";
 import { useListProduct } from "@core/hooks/product/useListProducts";
 import { useCreateProduct } from "@core/hooks/product/useCreateProduct";

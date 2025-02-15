@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ProductForm } from "./ProductForm";
 import { Product } from "@core/models/Product";
-import { Modal } from "@components/common/Modal";
-import { Button } from "@components/common/Button";
+import { Modal } from "@components/common/atoms/Modal";
+import { Button } from "@components/common/atoms/Button";
 import { ProductSchemaType } from "@core/schemas/ProductSchema";
 import { useUpdateProduct } from "@core/hooks/product/useUpdateProduct";
 import { useRemoveProduct } from "@core/hooks/product/useRemoveProduct";

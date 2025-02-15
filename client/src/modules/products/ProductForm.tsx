@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Product } from "@core/models/Product";
-import { Field } from "@components/common/Field";
-import { Button } from "@components/common/Button";
-import { Checkbox } from "@components/common/Checkbox";
-import { TextArea } from "@components/common/TextArea";
+import { Field } from "@components/common/atoms/Field";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Checkbox } from "@components/common/atoms/Checkbox";
+import { TextArea } from "@components/common/atoms/TextArea";
+import { Button } from "@components/common/atoms/Button";
 import { ProductSchema, ProductSchemaType } from "@core/schemas/ProductSchema";
 
 import SaveIcon from "@assets/svgs/save-icon.svg";
