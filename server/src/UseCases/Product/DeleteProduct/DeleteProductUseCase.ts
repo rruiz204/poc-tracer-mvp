@@ -2,22 +2,21 @@ import { DeleteProductSchema } from "./DeleteProductSchema";
 import { ValidationService } from "@Services/ValidationService";
 
 import type { UseCase } from "@UseCases/UseCase";
+import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { DeleteProductCommand } from "./DeleteProductCommand";
-import type { ProductRepository } from "@Repositories/ProductRepository";
 
 export class DeleteProductUseCase implements UseCase<DeleteProductCommand, ProductDTO> {
-  constructor(
-    private repository: ProductRepository,
-  ) {};
+  constructor(private uow: UnitOfWork) {};
 
   public async use(command: DeleteProductCommand): Promise<ProductDTO> {
     await ValidationService.validate(DeleteProductSchema, command);
 
-    const product = await this.repository.find({ id: { equals: command.id } });
+    const product = await this.uow.product.findById(command.id);
     if (!product) throw new Error("Product not found");
 
-    const deleted = await this.repository.delete({ id: command.id });
+    const deleted = await this.uow.product.delete({ id: command.id });
+    
     return {
       id: deleted.id,
       name: deleted.name,
