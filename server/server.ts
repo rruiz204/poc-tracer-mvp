@@ -5,7 +5,6 @@ const app = express();
 
 const bootstrap = new Boostrap(app);
 
-bootstrap.addLogging();
 bootstrap.addMiddlewares();
 bootstrap.addRouters();
 bootstrap.addExceptionHandler();
