@@ -1,22 +1,26 @@
 import type { UseCase } from "@UseCases/UseCase";
-import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { ListProductQuery } from "./ListProductQuery";
-import type { ProductRepository } from "@Repositories/ProductRepository";
+import type { UnitOfWork } from "@Database/Core/UnitOfWork";
+import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 
 export class ListProductUseCase implements UseCase<ListProductQuery ,ProductDTO[]> {
-  constructor(
-    private repository: ProductRepository,
-  ) {};
+  constructor(private uow: UnitOfWork) {};
 
   public async use(query: ListProductQuery): Promise<ProductDTO[]> {
-    return (await this.repository.list()).map(p => ({
-      id: p.id,
-      name: p.name,
-      description: p.description,
-      price: p.price,
-      stock: p.stock,
-      active: p.active,
-      createdAt: p.createdAt
+    const offset = query.page * query.limit;
+
+    const products = await this.uow.product.list({
+      offset: offset, limit: query.limit,
+    });
+    
+    return products.map((product) => ({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      active: product.active,
+      createdAt: product.createdAt,
+      description: product.description,
     }));
   };
 };
