@@ -33,4 +33,8 @@ export class ProductRepository {
   public async findById(id: number): Promise<Product | null> {
     return await this.prisma.product.findUnique({ where: { id } });
   };
+
+  public async findByName(name: string): Promise<Product | null> {
+    return await this.prisma.product.findUnique({ where: { name } });
+  };
 };
