@@ -1,12 +1,15 @@
 import type { UseCase } from "@UseCases/UseCase";
-import type { ListProductQuery } from "./ListProductQuery";
 import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
+import type { ListProductsQuery } from "./ListProductsQuery";
 
-export class ListProductUseCase implements UseCase<ListProductQuery ,ProductDTO[]> {
+import { ListProductsSchema } from "./ListProductsSchema";
+
+export class ListProductsUseCase implements UseCase<ListProductsQuery ,ProductDTO[]> {
   constructor(private uow: UnitOfWork) {};
 
-  public async use(query: ListProductQuery): Promise<ProductDTO[]> {
+  public async execute(query: ListProductsQuery): Promise<ProductDTO[]> {
+    await ListProductsSchema.validate(query);
     const offset = query.page * query.limit;
 
     const products = await this.uow.product.list({
