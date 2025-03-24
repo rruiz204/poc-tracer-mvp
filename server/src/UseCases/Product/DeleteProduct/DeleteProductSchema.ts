@@ -1,5 +1,5 @@
-import vine from "@vinejs/vine";
+import * as yup from "yup";
 
-export const DeleteProductSchema = vine.object({
-  id: vine.number(),
+export const DeleteProductSchema = yup.object({
+  id: yup.number().required(),
 });

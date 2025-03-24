@@ -1,3 +1,3 @@
-import type { Infer } from "@vinejs/vine/types";
+import * as yup from "yup";
 import { DeleteProductSchema } from "./DeleteProductSchema";
-export type DeleteProductCommand = Infer<typeof DeleteProductSchema>;
+export type DeleteProductCommand = yup.InferType<typeof DeleteProductSchema>;
