@@ -1,8 +1,8 @@
-import vine from "@vinejs/vine";
+import * as yup from "yup";
 
-export const CreateProductSchema = vine.object({
-  name: vine.string(),
-  description: vine.string(),
-  price: vine.number(),
-  stock: vine.number(),
+export const CreateProductSchema = yup.object({
+  name: yup.string().required(),
+  description: yup.string().required(),
+  price: yup.number().required().positive(),
+  stock: yup.number().required().positive(),
 });

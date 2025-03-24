@@ -1,16 +1,15 @@
-import { CreateProductSchema } from "./CreateProductSchema";
-import { ValidationService } from "@Services/ValidationService";
-
 import type { UseCase } from "@UseCases/UseCase";
 import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { CreateProductCommand } from "./CreateProductCommand";
 
+import { CreateProductSchema } from "./CreateProductSchema";
+
 export class CreateProductUseCase implements UseCase<CreateProductCommand, ProductDTO> {
   constructor(private uow: UnitOfWork) {};
 
-  public async use(command: CreateProductCommand): Promise<ProductDTO> {
-    await ValidationService.validate(CreateProductSchema, command);
+  public async execute(command: CreateProductCommand): Promise<ProductDTO> {
+    await CreateProductSchema.validate(command);
 
     const existing = await this.uow.product.findByName(command.name);
     if (existing) throw new Error("This product is already registered");

@@ -1,3 +1,3 @@
-import type { Infer } from "@vinejs/vine/types";
+import * as yup from "yup";
 import { CreateProductSchema } from "./CreateProductSchema";
-export type CreateProductCommand = Infer<typeof CreateProductSchema>;
+export type CreateProductCommand = yup.InferType<typeof CreateProductSchema>;
