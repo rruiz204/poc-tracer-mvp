@@ -1,5 +1,6 @@
 import express from "express";
 import { Boostrap } from "./bootstrap";
+import { ExpressConfig } from "@Configs/ExpressConfig";
 
 const app = express();
 
@@ -9,6 +10,6 @@ bootstrap.addMiddlewares();
 bootstrap.addRouters();
 /* bootstrap.addExceptionHandler(); */
 
-app.listen(3000, () => {
-  console.log(`Server is listening at http://localhost:3000`);
+app.listen(ExpressConfig.EXPRESS_PORT, () => {
+  console.log(`Server is listening at http://localhost:${ExpressConfig.EXPRESS_PORT}`);
 });
