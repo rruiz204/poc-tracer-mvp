@@ -1,16 +1,15 @@
-import { UpdateProductSchema } from "./UpdateProductSchema";
-import { ValidationService } from "@Services/ValidationService";
-
 import type { UseCase } from "@UseCases/UseCase";
 import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { UpdateProductCommand } from "./UpdateProductCommand";
 
+import { UpdateProductSchema } from "./UpdateProductSchema";
+
 export class UpdateProductUseCase implements UseCase<UpdateProductCommand, ProductDTO> {
   constructor(private uow: UnitOfWork) {};
 
-  public async use(command: UpdateProductCommand): Promise<ProductDTO> {
-    await ValidationService.validate(UpdateProductSchema, command);
+  public async execute(command: UpdateProductCommand): Promise<ProductDTO> {
+    await UpdateProductSchema.validate(command);
 
     const existing = await this.uow.product.findById(command.id);
     if (!existing) throw new Error("Product not found");
