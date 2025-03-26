@@ -8,7 +8,7 @@ const bootstrap = new Boostrap(app);
 
 bootstrap.addMiddlewares();
 bootstrap.addRouters();
-/* bootstrap.addExceptionHandler(); */
+bootstrap.addExceptionHandler();
 
 app.listen(ExpressConfig.EXPRESS_PORT, () => {
   console.log(`Server is listening at http://localhost:${ExpressConfig.EXPRESS_PORT}`);

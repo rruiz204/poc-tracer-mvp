@@ -4,6 +4,7 @@ import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { CreateProductCommand } from "./CreateProductCommand";
 
 import { CreateProductSchema } from "./CreateProductSchema";
+import { RedundancyException } from "@Exceptions/RedundancyException";
 
 export class CreateProductUseCase implements UseCase<CreateProductCommand, ProductDTO> {
   constructor(private uow: UnitOfWork) {};
@@ -12,7 +13,7 @@ export class CreateProductUseCase implements UseCase<CreateProductCommand, Produ
     await CreateProductSchema.validate(command);
 
     const existing = await this.uow.product.findByName(command.name);
-    if (existing) throw new Error("This product is already registered");
+    if (existing) throw new RedundancyException("This product is already registered");
 
     const created = await this.uow.product.create({ create: command });
     
