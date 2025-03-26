@@ -4,6 +4,7 @@ import type { Express } from "express";
 
 import { PingRouter } from "@Routers/PingRouter";
 import { ProductRouter } from "@Routers/ProductRouter";
+import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware";
 
 export class Boostrap {
   constructor(private app: Express) {}
@@ -18,10 +19,7 @@ export class Boostrap {
     this.app.use(json());
   };
 
-  /* public addExceptionHandler(): void {
-    this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-      const status = 500;
-      res.status(status).json({ message: err.message });
-    });
-  }; */
+  public addExceptionHandler(): void {
+    this.app.use(ExceptionMiddleware);
+  };
 };
