@@ -6,7 +6,7 @@ interface BuildArgs {
 };
 
 export class ProductFactory {
-  public static build({ id }: BuildArgs): Product {
+  public static async build({ id }: BuildArgs): Promise<Product> {
     return {
       id: id,
       name: faker.commerce.product(),
