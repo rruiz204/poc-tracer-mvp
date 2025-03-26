@@ -27,6 +27,7 @@
     "baseUrl": ".",
     "paths": {
       "@Repositories/*": ["src/Repositories/*"],
+      "@Middlewares/*": ["src/Middlewares/*"],
       "@Controllers/*": ["src/Controllers/*"],
       "@Services/*": ["src/Services/*"],
       "@Database/*": ["src/Database/*"],
