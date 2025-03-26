@@ -29,6 +29,7 @@
       "@Repositories/*": ["src/Repositories/*"],
       "@Middlewares/*": ["src/Middlewares/*"],
       "@Controllers/*": ["src/Controllers/*"],
+      "@Exceptions/*": ["src/Exceptions/*"],
       "@Services/*": ["src/Services/*"],
       "@Database/*": ["src/Database/*"],
       "@UseCases/*": ["src/UseCases/*"],
