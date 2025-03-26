@@ -13,9 +13,7 @@ export class UpdateProductUseCase implements UseCase<UpdateProductCommand, Produ
     await UpdateProductSchema.validate(command);
 
     const existing = await this.uow.product.findById(command.id);
-    if (!existing) throw new NotFoundException({
-      message: "Product not found",
-    });
+    if (!existing) throw new NotFoundException("Product not found");
 
     const updated = await this.uow.product.update({
       id: existing.id, update: command,

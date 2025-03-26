@@ -13,9 +13,7 @@ export class CreateProductUseCase implements UseCase<CreateProductCommand, Produ
     await CreateProductSchema.validate(command);
 
     const existing = await this.uow.product.findByName(command.name);
-    if (existing) throw new RedundancyException({
-      message: "This product is already registered"
-    });
+    if (existing) throw new RedundancyException("This product is already registered");
 
     const created = await this.uow.product.create({ create: command });
     

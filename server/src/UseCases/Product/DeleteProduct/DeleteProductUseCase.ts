@@ -13,9 +13,7 @@ export class DeleteProductUseCase implements UseCase<DeleteProductCommand, Produ
     await DeleteProductSchema.validate(command);
 
     const product = await this.uow.product.findById(command.id);
-    if (!product) throw new NotFoundException({
-      message: "Product not found",
-    });
+    if (!product) throw new NotFoundException("Product not found");
 
     const deleted = await this.uow.product.delete({ id: command.id });
     
