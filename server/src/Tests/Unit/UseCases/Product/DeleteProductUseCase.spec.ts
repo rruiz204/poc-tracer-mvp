@@ -18,8 +18,6 @@ describe("delete product use case", () => {
     product1 = await ProductFactory.build({ id: 1 });
   });
 
-  // ======================== Test Section ============================
-
   it("should delete the product when it exists", async () => {
     vi.spyOn(uow.product, "findById").mockResolvedValue(product1);
     vi.spyOn(uow.product, "delete").mockResolvedValue(product1);
