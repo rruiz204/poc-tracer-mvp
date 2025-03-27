@@ -18,8 +18,6 @@ describe("create product use case", () => {
     product1 = await ProductFactory.build({ id: 1 });
   });
 
-  // ======================== Test Section ============================
-
   it("should create a new product when no product with the same name exists", async () => {
     vi.spyOn(uow.product, "findByName").mockResolvedValue(null);
     vi.spyOn(uow.product, "create").mockResolvedValue(product1);
