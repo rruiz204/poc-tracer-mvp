@@ -3,15 +3,12 @@ import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { UpdateProductCommand } from "./UpdateProductCommand";
 
-import { UpdateProductSchema } from "./UpdateProductSchema";
 import { NotFoundException } from "@Exceptions/NotFoundException";
 
 export class UpdateProductUseCase implements UseCase<UpdateProductCommand, ProductDTO> {
   constructor(private uow: UnitOfWork) {};
 
   public async execute(command: UpdateProductCommand): Promise<ProductDTO> {
-    await UpdateProductSchema.validate(command);
-
     const existing = await this.uow.product.findById(command.id);
     if (!existing) throw new NotFoundException("Product not found");
 

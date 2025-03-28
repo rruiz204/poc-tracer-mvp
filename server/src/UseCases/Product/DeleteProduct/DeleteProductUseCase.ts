@@ -3,15 +3,12 @@ import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { DeleteProductCommand } from "./DeleteProductCommand";
 
-import { DeleteProductSchema } from "./DeleteProductSchema";
 import { NotFoundException } from "@Exceptions/NotFoundException";
 
 export class DeleteProductUseCase implements UseCase<DeleteProductCommand, ProductDTO> {
   constructor(private uow: UnitOfWork) {};
 
   public async execute(command: DeleteProductCommand): Promise<ProductDTO> {
-    await DeleteProductSchema.validate(command);
-
     const product = await this.uow.product.findById(command.id);
     if (!product) throw new NotFoundException("Product not found");
 
