@@ -22,8 +22,7 @@ const controller = new ProductController(
 
 export const ProductRouter = Router();
 
-/* ProductRouter.get("/", controller.list); */
-
+ProductRouter.get("/", controller.list);
 ProductRouter.put("/", controller.update);
 ProductRouter.post("/", controller.create);
 ProductRouter.delete("/", controller.delete);
