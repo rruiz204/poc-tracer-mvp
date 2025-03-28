@@ -13,11 +13,17 @@ export class ProductSeeder implements Seeder {
   };
 
   public async seed(): Promise<void> {
-    for (let index = 0; index < this.amount; index++) {
-      const data = ProductFactory.build({ id: index });
+    for (let index = 1; index <= this.amount; index++) {
+      const data = await ProductFactory.build({ id: index });
       const name = `${data.name}-${index}`;
-      
-      await this.productRepository.create({ create: { ...data, name } });
+
+      await this.productRepository.create({ create: {
+        name: name,
+        price: data.price,
+        stock: data.stock,
+        active: data.active,
+        description: data.description,
+      }});
     };
   };
 };
