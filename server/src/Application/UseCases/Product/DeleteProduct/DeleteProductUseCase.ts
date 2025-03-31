@@ -1,6 +1,6 @@
 import type { UseCase } from "@UseCases/UseCase";
+import type { ProductDTO } from "@DTOs/ProductDTO";
 import type { UnitOfWork } from "@Database/Core/UnitOfWork";
-import type { ProductDTO } from "@UseCases/DTOs/ProductDTO";
 import type { DeleteProductCommand } from "./DeleteProductCommand";
 
 import { NotFoundException } from "@Exceptions/NotFoundException";

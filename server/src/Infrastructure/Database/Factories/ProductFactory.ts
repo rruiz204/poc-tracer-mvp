@@ -1,12 +1,12 @@
 import { faker } from "@faker-js/faker";
 import type { Product } from "@prisma/client";
 
-interface BuildArgs {
+interface Arguments {
   id: number;
 };
 
 export class ProductFactory {
-  public static async build({ id }: BuildArgs): Promise<Product> {
+  public static async build({ id }: Arguments): Promise<Product> {
     return {
       id: id,
       name: faker.commerce.product(),

@@ -1,7 +1,7 @@
-import type { Seeder } from "./Seeder";
+import type { Seeder } from "../Seeders/Seeder";
 import { Context } from "@Database/Core/Context";
 
-import { ProductSeeder } from "./ProductSeeder";
+import { ProductSeeder } from "../Seeders/ProductSeeder";
 import { ProductRepository } from "@Repositories/Product/ProductRepository";
 
 const productRepository = new ProductRepository(Context);
