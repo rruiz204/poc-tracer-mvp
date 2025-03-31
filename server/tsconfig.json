@@ -30,14 +30,14 @@
       "@Middlewares/*": ["src/Presentation/Middlewares/*"],
       "@Routers/*": ["src/Presentation/Routers/*"],
 
-      "@Repositories/*": ["src/Repositories/*"],
+      "@Repositories/*": ["src/Infrastructure/Repositories/*"],
+      "@Database/*": ["src/Infrastructure/Database/*"],
+      "@Configs/*": ["src/Infrastructure/Configs/*"],
       
       
       "@Exceptions/*": ["src/Exceptions/*"],
       "@Services/*": ["src/Services/*"],
-      "@Database/*": ["src/Database/*"],
       "@UseCases/*": ["src/UseCases/*"],
-      "@Configs/*": ["src/Configs/*"],
     }
   }
 }
