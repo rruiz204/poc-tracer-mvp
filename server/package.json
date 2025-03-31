@@ -11,7 +11,7 @@
     "test:unit:coverage": "vitest --coverage"
   },
   "prisma": {
-    "seed": "bun ./src/Database/Seeders/SeedRunner.ts"
+    "seed": "bun ./src/Database/Core/SeedRunner.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
