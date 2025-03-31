@@ -26,15 +26,17 @@
 
     "baseUrl": ".",
     "paths": {
-      "@Repositories/*": ["src/Repositories/*"],
-      "@Middlewares/*": ["src/Middlewares/*"],
-      "@Controllers/*": ["src/Controllers/*"],
-      "@Exceptions/*": ["src/Exceptions/*"],
-      "@Services/*": ["src/Services/*"],
-      "@Database/*": ["src/Database/*"],
-      "@UseCases/*": ["src/UseCases/*"],
-      "@Routers/*": ["src/Routers/*"],
-      "@Configs/*": ["src/Configs/*"],
+      "@Controllers/*": ["src/Presentation/Controllers/*"],
+      "@Middlewares/*": ["src/Presentation/Middlewares/*"],
+      "@Routers/*": ["src/Presentation/Routers/*"],
+
+      "@Repositories/*": ["src/Infrastructure/Repositories/*"],
+      "@Database/*": ["src/Infrastructure/Database/*"],
+      "@Configs/*": ["src/Infrastructure/Configs/*"],
+
+      "@Exceptions/*": ["src/Application/Exceptions/*"],
+      "@UseCases/*": ["src/Application/UseCases/*"],
+      "@DTOs/*": ["src/Application/DTOs/*"],
     }
   }
 }

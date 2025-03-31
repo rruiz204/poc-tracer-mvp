@@ -1,8 +1,10 @@
 import { PrismaClient, type Product } from "@prisma/client";
 
 import type {
-  ListProductsParams, DeleteProductParams,
-  CreateProductParams, UpdateProductParams,
+  ListProductsParams,
+  DeleteProductParams,
+  CreateProductParams,
+  UpdateProductParams,
 } from "./ProductParams";
 
 export class ProductRepository {
