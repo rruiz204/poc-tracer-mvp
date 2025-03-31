@@ -33,11 +33,10 @@
       "@Repositories/*": ["src/Infrastructure/Repositories/*"],
       "@Database/*": ["src/Infrastructure/Database/*"],
       "@Configs/*": ["src/Infrastructure/Configs/*"],
-      
-      
-      "@Exceptions/*": ["src/Exceptions/*"],
-      "@Services/*": ["src/Services/*"],
-      "@UseCases/*": ["src/UseCases/*"],
+
+      "@Exceptions/*": ["src/Application/Exceptions/*"],
+      "@UseCases/*": ["src/Application/UseCases/*"],
+      "@DTOs/*": ["src/Application/DTOs/*"],
     }
   }
 }
