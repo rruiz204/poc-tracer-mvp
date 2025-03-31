@@ -26,14 +26,17 @@
 
     "baseUrl": ".",
     "paths": {
+      "@Controllers/*": ["src/Presentation/Controllers/*"],
+      "@Middlewares/*": ["src/Presentation/Middlewares/*"],
+      "@Routers/*": ["src/Presentation/Routers/*"],
+
       "@Repositories/*": ["src/Repositories/*"],
-      "@Middlewares/*": ["src/Middlewares/*"],
-      "@Controllers/*": ["src/Controllers/*"],
+      
+      
       "@Exceptions/*": ["src/Exceptions/*"],
       "@Services/*": ["src/Services/*"],
       "@Database/*": ["src/Database/*"],
       "@UseCases/*": ["src/UseCases/*"],
-      "@Routers/*": ["src/Routers/*"],
       "@Configs/*": ["src/Configs/*"],
     }
   }
