@@ -1,4 +1,5 @@
 name: Server Unit Tests
+run-name: running server unit tests
 
 on:
   push:
