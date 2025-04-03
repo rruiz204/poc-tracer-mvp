@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import { HomePage } from "@modules/home/HomePage";
