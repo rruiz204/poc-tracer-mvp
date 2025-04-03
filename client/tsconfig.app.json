@@ -34,9 +34,19 @@
       "@components/*": ["src/components/*"],
       "@modules/*": ["src/modules/*"],
       "@shared/*": ["src/shared/*"],
+
       "@assets/*": ["src/Assets/*"],
+
+      "@services/*": ["src/Core/Services/*"],
+      "@schemas/*": ["src/Core/Schemas/*"],
+      "@helpers/*": ["src/Core/Helpers/*"],
+      "@models/*": ["src/Core/Models/*"],
+      "@stores/*": ["src/Core/Stores/*"],
+      "@hooks/*": ["src/Core/Hooks/*"],
+
+
       "@pages/*": ["src/pages/*"],
-      "@core/*": ["src/core/*"],
+
     }
   },
   "include": ["src", "tests"]
