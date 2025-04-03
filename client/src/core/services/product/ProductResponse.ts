@@ -1,17 +1,7 @@
-import { Product } from "@core/models/Product";
+import { Product } from "@models/Product";
 
-export interface ListProductResponse {
+export interface SimpleProductResponse extends Product {};
+
+export interface ListProductsResponse {
   products: Product[];
-};
-
-export interface CreateProductResponse {
-  product: Product;
-};
-
-export interface RemoveProductResponse {
-  product: Product;
-};
-
-export interface UpdateProductResponse {
-  product: Product;
 };
