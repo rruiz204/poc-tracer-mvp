@@ -12,7 +12,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@faker-js/faker": "^9.4.0",
+    "@faker-js/faker": "^9.6.0",
     "@hookform/resolvers": "^3.10.0",
     "@playwright/test": "^1.49.1",
     "@tailwindcss/vite": "^4.1.1",
