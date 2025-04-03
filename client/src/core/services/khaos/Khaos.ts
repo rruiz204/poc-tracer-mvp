@@ -1,5 +1,4 @@
-import { IKhaos, KhaosResponse } from "./KhaosTypes";
-import { HttpMethod } from "./KhaosTypes";
+import type { IKhaos, KhaosResponse, HttpMethod } from "./KhaosTypes";
 
 export class Khaos implements IKhaos {
   private url: string = import.meta.env.VITE_BASE_URL;
