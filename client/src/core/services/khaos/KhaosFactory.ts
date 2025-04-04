@@ -1,17 +1,13 @@
 import { Khaos } from "./Khaos";
-import { HttpMethod } from "./KhaosTypes";
-
-interface BuildArgs {
-  endpoint: string;
-  method: HttpMethod;
-};
+import type { KhaosOptions } from "./KhaosTypes";
 
 export class KhaosFactory {
-
-  public static build(args: BuildArgs): Khaos {
+  public static build(options: KhaosOptions): Khaos {
     const khaos = new Khaos();
-    khaos.setHttpMethod(args.method);
-    khaos.setEndpoint(args.endpoint);
+
+    khaos.setHttpMethod(options.method);
+    khaos.setEndpoint(options.endpoint);
+    
     return khaos;
   };
 };

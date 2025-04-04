@@ -1,42 +1,35 @@
-import { KhaosResponse } from "@core/services/khaos/KhaosTypes";
-import { KhaosFactory } from "@core/services/khaos/KhaosFactory";
-import { 
-  ListProductResponse,
-  CreateProductResponse,
-  RemoveProductResponse,
-  UpdateProductResponse,
+import { KhaosResponse } from "@services/Khaos/KhaosTypes";
+import { KhaosFactory } from "@services/Khaos/KhaosFactory";
+
+import {
+  ListProductsResponse,
+  SimpleProductResponse,
 } from "./ProductResponse";
+
 import {
   CreateProductPayload,
-  DeleteProductPayload,
   UpdateProductPayload,
+  DeleteProductPayload,
 } from "./ProductPayload";
 
-enum Endpoint {
-  Product = "product",
-};
+export class ProductService {
+  public static async list(): Promise<KhaosResponse<ListProductsResponse>> {
+    const khaos = KhaosFactory.build({ endpoint: "product", method: "GET" });
+    return await khaos.invoke<ListProductsResponse>();
+  };
 
-const list = async (): Promise<KhaosResponse<ListProductResponse>> => {
-  const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "GET" });
-  return await khaos.invoke<ListProductResponse>();
-};
+  public static async create(payload: CreateProductPayload): Promise<KhaosResponse<SimpleProductResponse>> {
+    const khaos = KhaosFactory.build({ endpoint: "product", method: "POST" }).setBody(payload);
+    return await khaos.invoke<SimpleProductResponse>();
+  };
 
-const create = async (payload: CreateProductPayload): Promise<KhaosResponse<CreateProductResponse>> => {
-  const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "POST" });
-  khaos.setBody(payload);
-  return await khaos.invoke<CreateProductResponse>();
-};
+  public static async update(payload: UpdateProductPayload): Promise<KhaosResponse<SimpleProductResponse>> {
+    const khaos = KhaosFactory.build({ endpoint: "product", method: "PUT" }).setBody(payload);
+    return await khaos.invoke<SimpleProductResponse>();
+  };
 
-const remove = async (payload: DeleteProductPayload): Promise<KhaosResponse<RemoveProductResponse>> => {
-  const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "DELETE" });
-  khaos.setBody(payload);
-  return await khaos.invoke<RemoveProductResponse>();
+  public static async delete(payload: DeleteProductPayload): Promise<KhaosResponse<SimpleProductResponse>> {
+    const khaos = KhaosFactory.build({ endpoint: "product", method: "DELETE" }).setBody(payload);
+    return await khaos.invoke<SimpleProductResponse>();
+  };
 };
-
-const update = async (payload: UpdateProductPayload): Promise<KhaosResponse<UpdateProductResponse>> => {
-  const khaos = KhaosFactory.build({ endpoint: Endpoint.Product, method: "PUT" });
-  khaos.setBody(payload);
-  return await khaos.invoke<UpdateProductResponse>();
-};
-
-export const ProductService = Object.freeze({ list, create, remove, update });
