@@ -1,7 +1,11 @@
-import { Product } from "@core/models/Product"
+import * as yup from "yup";
 
-export interface CreateProductPayload extends Omit<Product, "id" | "createdAt"> {};
+import { ListProductsSchema } from "@schemas/Product/ListProductsSchema";
+import { CreateProductSchema } from "@schemas/Product/CreateProductSchema";
+import { UpdateProductSchema } from "@schemas/Product/UpdateProductSchema";
+import { DeleteProductSchema } from "@schemas/Product/DeleteProductSchema";
 
-export interface UpdateProductPayload extends Omit<Product, "createdAt"> {};
-
-export interface DeleteProductPayload extends Pick<Product, "id"> {};
+export type ListProductsPayload = yup.InferType<typeof ListProductsSchema>;
+export type CreateProductPayload = yup.InferType<typeof CreateProductSchema>;
+export type UpdateProductPayload = yup.InferType<typeof UpdateProductSchema>;
+export type DeleteProductPayload = yup.InferType<typeof DeleteProductSchema>;

@@ -1,11 +1,8 @@
-import { PageLayout } from "@components/layouts/PageLayout";
-
-export const HomePage = (): JSX.Element => {
+export const HomePage = () => {
   return (
-    <PageLayout>
-      <h1 className="text-3xl font-semibold mb-8 text-white">
-        Home
-      </h1>
-    </PageLayout>
+    <div>
+      <h1>Welcome to the Home Page</h1>
+      <p>Here you can find information about our website.</p>
+    </div>
   );
 };
