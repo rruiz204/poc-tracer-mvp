@@ -31,12 +31,6 @@
       "@e2e/pages/*": ["src/tests/e2e/pages/*"],
       "@e2e/mocks/*": ["src/tests/e2e/mocks/*"],
 
-      "@components/*": ["src/components/*"],
-      "@modules/*": ["src/modules/*"],
-      "@shared/*": ["src/shared/*"],
-
-      "@assets/*": ["src/Assets/*"],
-
       "@services/*": ["src/Core/Services/*"],
       "@schemas/*": ["src/Core/Schemas/*"],
       "@helpers/*": ["src/Core/Helpers/*"],
@@ -44,9 +38,9 @@
       "@stores/*": ["src/Core/Stores/*"],
       "@hooks/*": ["src/Core/Hooks/*"],
 
-
-      "@pages/*": ["src/pages/*"],
-
+      "@components/*": ["src/Components/*"],
+      "@modules/*": ["src/Modules/*"],
+      "@assets/*": ["src/Assets/*"],
     }
   },
   "include": ["src", "tests"]
