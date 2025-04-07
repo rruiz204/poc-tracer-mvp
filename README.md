@@ -1,1 +1,1 @@
-### Playwright E2E Testing
+### Stocker MVP
