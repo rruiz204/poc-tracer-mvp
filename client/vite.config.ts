@@ -21,6 +21,7 @@ export default defineConfig({
       { find: "@components", replacement: "/src/Components" },
       { find: "@modules", replacement: "/src/Modules" },
       { find: "@assets", replacement: "/src/Assets" },
+      { find: "@shadcn", replacement: "/src/Shadcn" },
     ],
   },
 })
