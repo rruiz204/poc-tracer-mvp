@@ -1,1 +1,1 @@
-### Stocker MVP
+### Tracer MVP | Habit Tracker
