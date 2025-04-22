@@ -1,11 +1,9 @@
-import type { Seeder } from "../Seeders/Seeder";
+import { Seeder } from "./Seeder";
 import { Context } from "@Database/Core/Context";
 
-import { ProductSeeder } from "../Seeders/ProductSeeder";
-import { ProductRepository } from "@Repositories/Product/ProductRepository";
+import { UserSeeder } from "@Database/Seeders/UserSeeder";
 
-const productRepository = new ProductRepository(Context);
-const productSeeder = new ProductSeeder(productRepository);
+const userSeeder = new UserSeeder(Context);
 
 const SeedRunner = async (seeders: Seeder[]) => {
   for (const seeder of seeders) {
@@ -24,5 +22,5 @@ const SeedRunner = async (seeders: Seeder[]) => {
 };
 
 await SeedRunner([
-  productSeeder,
+  userSeeder,
 ]);
