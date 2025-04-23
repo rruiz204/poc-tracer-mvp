@@ -38,9 +38,8 @@
       "@UseCases/*": ["src/Application/UseCases/*"],
       "@DTOs/*": ["src/Application/DTOs/*"],
       
+      "@Specs/*": ["src/Domain/Specifications/*"],
       "@Models/*": ["src/Domain/Models/*"],
-      "@Specs/*": ["src/Domain/Specs/*"],
-      "@Types/*": ["src/Domain/Types/*"],
     }
   }
 }
