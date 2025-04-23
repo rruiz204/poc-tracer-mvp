@@ -1,16 +1,11 @@
-import { User } from "@Models/User";
+import type { User } from "@Models/User";
 import { PrismaClient } from "@prisma/client";
 
 export class UserRepository {
   constructor(private prisma: PrismaClient) {};
 
-  public async list(spec: User.Spec): Promise<User.Records> {
-    return await this.prisma.user.findMany({
-      where: spec.toFilters?.(),
-      orderBy: spec.toOrder?.(),
-      take: User.Paginate.take,
-      skip: User.Paginate.skip,
-    });
+  public async list(): Promise<User.Records> {
+    return await this.prisma.user.findMany();
   };
 
   public async update(id: number, params: User.UpdateParams): Promise<User.Entity> {
