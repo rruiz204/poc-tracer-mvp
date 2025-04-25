@@ -1,5 +1,5 @@
-import { Prisma } from "@prisma/client";
-import type { User as Model } from "@prisma/client";
+import { Prisma } from "generated/prisma";
+import type { User as Model } from "generated/prisma";
 
 export namespace User {
   export type Entity = Model;

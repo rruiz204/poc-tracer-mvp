@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  tracer-db:
+    image: postgres:14
+    container_name: tracer-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - tracer-data:/var/lin/postgres/data
+    environment:
+      - POSTGRES_DB=tracer
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+
+volumes:
+  tracer-data:
