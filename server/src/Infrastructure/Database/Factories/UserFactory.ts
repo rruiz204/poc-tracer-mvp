@@ -1,5 +1,5 @@
-import { User } from "@Models/User";
 import { faker } from "@faker-js/faker";
+import type { User } from "@Models/User";
 
 export class UserFactory {
   public static async build(user: User.Optinal): Promise<User.Entity> {
