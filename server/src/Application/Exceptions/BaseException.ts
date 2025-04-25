@@ -1,5 +1,5 @@
 export abstract class BaseException extends Error {
-  public readonly status: number;
+  public status: number;
 
   constructor(status: number, message: string) {
     super(message);
