@@ -1,4 +1,4 @@
-import type { UserDTO } from "@DTOs/UserDTO";
+import type { AuthDTO } from "@DTOs/AuthDTO";
 import type { UseCase } from "@UseCases/UseCase";
 import type { UnitOfWork } from "@Database/Core/UnitOfWork";
 import type { RegisterUserCommand } from "./RegisterUserCommand";
@@ -6,10 +6,10 @@ import type { RegisterUserCommand } from "./RegisterUserCommand";
 import { RegisterUserSchema } from "./RegisterUserSchema";
 import { LogicException } from "@Exceptions/LogicException";
 
-export class RegisterUserUseCase implements UseCase<RegisterUserCommand, UserDTO> {
+export class RegisterUserUseCase implements UseCase<RegisterUserCommand, AuthDTO> {
   constructor(private uow: UnitOfWork) {};
 
-  public async execute(command: RegisterUserCommand): Promise<UserDTO> {
+  public async execute(command: RegisterUserCommand): Promise<AuthDTO> {
     const validated = await RegisterUserSchema.validate(command);
     
     const existing = await this.uow.user.findByEmail(validated.email);
@@ -17,10 +17,6 @@ export class RegisterUserUseCase implements UseCase<RegisterUserCommand, UserDTO
 
     const created = await this.uow.user.create(validated);
 
-    return {
-      id: created.id,
-      name: created.name,
-      email: created.email,
-    };
+    return { type: "Bearer", token: "fake token" };
   };
 };
