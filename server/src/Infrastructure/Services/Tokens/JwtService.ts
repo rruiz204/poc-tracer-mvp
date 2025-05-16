@@ -1,9 +1,6 @@
+import { SignJWT, jwtVerify} from "jose";
+import type { JwtPayload } from "./JwtPayload";
 import { AuthConfig } from "@Configs/AuthConfig";
-import { SignJWT, jwtVerify, type JWTPayload } from "jose";
-
-export type JwtPayload = JWTPayload & {
-  id: number;
-};
 
 const secret = new TextEncoder().encode(AuthConfig.AUTH_JWT_SECRET);
 
