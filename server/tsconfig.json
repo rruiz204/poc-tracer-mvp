@@ -17,6 +17,8 @@
     // Best practices
     "strict": true,
     "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
 
     // Some stricter flags (disabled by default)
@@ -42,5 +44,9 @@
       "@Specs/*": ["src/Domain/Specifications/*"],
       "@Models/*": ["src/Domain/Models/*"],
     }
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts",
+  ]
 }
