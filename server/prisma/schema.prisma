@@ -21,8 +21,3 @@ model User {
   password String
   active   Boolean @default(true)
 }
-
-model Seed {
-  id   Int    @id @default(autoincrement())
-  name String
-}

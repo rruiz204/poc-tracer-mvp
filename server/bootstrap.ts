@@ -3,7 +3,8 @@ import { json } from "body-parser";
 import type { Express } from "express";
 
 import { PingRouter } from "@Routers/PingRouter";
-import { UserRouter } from "@Routers/UserRouter";
+import { AuthRouter } from "@Routers/AuthRouter";
+
 import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware";
 
 export class Boostrap {
@@ -11,7 +12,7 @@ export class Boostrap {
 
   public addRouters(): void {
     this.app.use("/api/ping", PingRouter);
-    this.app.use("/api/user", UserRouter);
+    this.app.use("/api/auth", AuthRouter);
   };
 
   public addMiddlewares(): void {
