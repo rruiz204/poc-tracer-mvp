@@ -28,14 +28,15 @@
 
     "baseUrl": ".",
     "paths": {
-      "@Controllers/*": ["src/Presentation/Controllers/*"],
-      "@Middlewares/*": ["src/Presentation/Middlewares/*"],
-      "@Routers/*": ["src/Presentation/Routers/*"],
-
       "@Repositories/*": ["src/Infrastructure/Repositories/*"],
+      "@Containers/*": ["src/Infrastructure/Containers/*"],
       "@Services/*": ["src/Infrastructure/Services/*"],
       "@Database/*": ["src/Infrastructure/Database/*"],
       "@Configs/*": ["src/Infrastructure/Configs/*"],
+
+      "@Controllers/*": ["src/Presentation/Controllers/*"],
+      "@Middlewares/*": ["src/Presentation/Middlewares/*"],
+      "@Routers/*": ["src/Presentation/Routers/*"],
 
       "@Exceptions/*": ["src/Application/Exceptions/*"],
       "@UseCases/*": ["src/Application/UseCases/*"],
@@ -45,8 +46,4 @@
       "@Models/*": ["src/Domain/Models/*"],
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "tests/**/*.ts",
-  ]
 }
