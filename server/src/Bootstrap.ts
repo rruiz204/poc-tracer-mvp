@@ -5,10 +5,10 @@ import type { Express } from "express";
 import { PingRouter } from "@Routers/PingRouter";
 import { AuthRouter } from "@Routers/AuthRouter";
 
-import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware";
+import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware"
 
-export class Boostrap {
-  constructor(private app: Express) {}
+export class Bootstrap {
+  constructor(private app: Express) {};
 
   public addRouters(): void {
     this.app.use("/api/ping", PingRouter);
@@ -16,8 +16,11 @@ export class Boostrap {
   };
 
   public addMiddlewares(): void {
-    this.app.use(cors());
     this.app.use(json());
+  };
+
+  public addCors(): void {
+    this.app.use(cors());
   };
 
   public addExceptionHandler(): void {
