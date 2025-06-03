@@ -15,12 +15,12 @@ export class AuthController {
   };
 
   public async login(req: Request, res: Response): Promise<void> {
-    const auth = await this.emailLoginUseCase.execute(req.body);
-    res.status(200).json({ auth });
+    const response = await this.emailLoginUseCase.execute(req.body);
+    res.status(200).json(response);
   };
 
   public async register(req: Request, res: Response): Promise<void> {
-    const auth = await this.emailRegisterUseCase.execute(req.body);
-    res.status(200).json({ auth });
+    const response = await this.emailRegisterUseCase.execute(req.body);
+    res.status(200).json(response);
   };
 };
